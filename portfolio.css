@@ -1,0 +1,84 @@
+/* RESET */
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, figure, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  list-style: none;
+}
+
+section.left-nav-column {
+  background-color: #fff;
+
+}
+
+section.content-column {
+  
+}
+
+/* Rectangle 7: */
+background: #F2F3EF;
+/* Github: */
+font-family: CircularStd-Book;
+font-size: 14px;
+color: #E53C1B;
+line-height: 18px;
+/* View Project: */
+font-family: CircularStd-Book;
+font-size: 14px;
+color: #E53C1B;
+line-height: 18px;
+/* Lorem ipsum dolor si: */
+font-family: RomainTextTrial;
+font-size: 14px;
+color: #000000;
+line-height: 20px;
+/* Mask: */
+/* macboog-retina-big: */
+/* Mask: */
+/* Screen Shot 2016-02-08 at 11.51.47 PM: */
+/* Mask: */
+/* Screen Shot 2016-02-08 at 11.51.50 PM: */
+/* Rectangle 8: */
+background: #FFFFFF;
+/* Will McMeans: */
+font-family: RomainHeadlineTrial;
+font-size: 18px;
+color: #000000;
+line-height: 28px;
+/* default: */
+background: #000000;
+border: 1px solid #FFFFFF;
+/* Cookbook: */
+font-family: RomainHeadlineTrial;
+font-size: 36px;
+color: #000000;
+line-height: 44px;
+/* Spots: */
+opacity: 0.3;
+font-family: RomainHeadlineTrial;
+font-size: 36px;
+color: #000000;
+line-height: 44px;
+/* Rails Light: */
+opacity: 0.3;
+font-family: RomainHeadlineTrial;
+font-size: 36px;
+color: #000000;
+line-height: 44px;
+/* Profile: */
+font-family: CircularStd-Book;
+font-size: 18px;
+color: #E53C1B;
+line-height: 23px;
