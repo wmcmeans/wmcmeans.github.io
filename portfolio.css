@@ -18,17 +18,33 @@ span, article, footer, time, small {
   list-style: none;
 }
 
-section.left-nav-column {
-  background-color: #fff;
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
+section.left-nav-column {
+  float: left;
+  background-color: #fff;
+  width: 35%;
+  height: 100vh;
 }
 
 section.content-column {
-  
+  float: right;
+  background-color: #F2F3EF;
+  width: 65%;
+  height: 100vh;
+}
+
+.profile.inactive {
+  display: none;
+  width: 0;
 }
 
 /* Rectangle 7: */
-background: #F2F3EF;
+background: ;
 /* Github: */
 font-family: CircularStd-Book;
 font-size: 14px;
