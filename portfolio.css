@@ -39,12 +39,22 @@ span, article, footer, time, small {
   clear: both;
 }
 
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  width: 165%;
+}
+
 section.left-nav-column {
   position: relative;
   box-sizing: border-box;
   float: left;
   background-color: #FFFFFF;
-  width: 35%;
+  width: 22%;
   height: 100vh;
   padding: 70px 110px;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
@@ -52,15 +62,18 @@ section.left-nav-column {
 
 section.content-column {
   position: relative;
-  float: right;
+  float: left;
   background-color: #F2F3EF;
-  width: 65%;
+  width: 39%;
   height: 100%;
 }
 
-.profile.inactive {
-  display: none;
-  width: 0;
+section.profile {
+  background-color: #FFFFFF;
+  width: 39%;
+  height: 100%;
+  position: relative;
+  float: right;
 }
 
 h2.name-title {

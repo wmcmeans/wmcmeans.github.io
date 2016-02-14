@@ -1,6 +1,6 @@
 module.exports = {
   context: __dirname,
-  entry: "./lib/portfolio.js",
+  entry: "./lib/javascript/portfolio.js",
   output: {
     path: "./lib",
     publicPath: "/lib/",
