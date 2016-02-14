@@ -8,6 +8,11 @@
   src: url("./lib/fonts/RHL-reg.otf")
 }
 
+@font-face {
+  font-family: "CT-bk";
+  src: url("./lib/fonts/CSTD-bk.otf")
+}
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -46,10 +51,11 @@ section.left-nav-column {
 }
 
 section.content-column {
+  position: relative;
   float: right;
   background-color: #F2F3EF;
   width: 65%;
-  height: 100vh;
+  height: 100%;
 }
 
 .profile.inactive {
@@ -66,6 +72,36 @@ ul.nav-list {
   top: 50%;
   transform: translateY(-50%);
   font-size: 3em;
+}
+
+.nav-list > li {
+  margin: 30px 0;
+  opacity: 0.3;
+}
+
+.nav-list > li.active {
+  opacity: 1;
+}
+
+div.profile-link {
+  position: absolute;
+  top: 60px;
+  right: 110px;
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  font-size: 18px;
+  color: #E53C1B;
+  line-height: 23px;
+}
+
+div.main-img-container {
+  position: relative;
+  width: 70%;
+  margin: 15% auto;
+}
+
+img.macbook {
+  display: block;
+  width: 100%;
 }
 
 /* Rectangle 7: */
