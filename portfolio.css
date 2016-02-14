@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "RT";
+  src: url("./lib/fonts/RT-reg.otf")
+}
+
+@font-face {
+  font-family: "RHL";
+  src: url("./lib/fonts/RHL-reg.otf")
+}
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -25,13 +35,14 @@ span, article, footer, time, small {
 }
 
 section.left-nav-column {
+  position: relative;
   box-sizing: border-box;
   float: left;
   background-color: #FFFFFF;
   width: 35%;
   height: 100vh;
   padding: 70px 110px;
-  font-family: 'Times New Roman', serif;
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
 }
 
 section.content-column {
@@ -51,6 +62,9 @@ h2.name-title {
 }
 
 ul.nav-list {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 3em;
 }
 
