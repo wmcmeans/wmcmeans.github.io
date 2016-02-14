@@ -54,18 +54,18 @@ section.left-nav-column {
   box-sizing: border-box;
   float: left;
   background-color: #FFFFFF;
-  width: 22%;
+  width: 33%;
   height: 100vh;
   padding: 70px 110px;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
 }
 
-section.content-column {
+section.project-content {
   position: relative;
   float: left;
   background-color: #F2F3EF;
-  width: 39%;
-  height: 100%;
+  width: 67%;
+  min-height: 100vh;
 }
 
 section.profile {
@@ -74,6 +74,27 @@ section.profile {
   height: 100%;
   position: relative;
   float: right;
+}
+
+section.projects {
+  position: relative;
+  width: 61%;
+}
+
+div.overlay {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0.5;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+div.overlay.inactive {
+  display: none;
+  transition: all 0.3s;
 }
 
 h2.name-title {
