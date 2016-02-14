@@ -83,25 +83,58 @@ ul.nav-list {
   opacity: 1;
 }
 
-div.profile-link {
+a.profile-link {
+  display: block;
   position: absolute;
   top: 60px;
+  padding: 7px 15px;
   right: 110px;
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
   color: #E53C1B;
+  border: 1px solid #E53C1B;
+  border-radius: 3px;
   line-height: 23px;
+  transition: all 0.1s;
+}
+
+a.profile-link:hover {
+  color: #FFFFFF;
+  background-color: #E53C1B;
+  transition: all 0.1s;
 }
 
 div.main-img-container {
   position: relative;
   width: 70%;
-  margin: 15% auto;
+  margin: 15% auto 80px auto;
 }
 
 img.macbook {
   display: block;
   width: 100%;
+}
+
+article.project-description {
+  width: 57%;
+  margin: auto;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+article.project-description > p {
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+div.project-links {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  margin-top: 20px;
+  color: #E53C1B;
+}
+
+div.project-links > a {
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 /* Rectangle 7: */
