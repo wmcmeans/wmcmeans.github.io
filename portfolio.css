@@ -40,7 +40,6 @@ span, article, footer, time, small {
 }
 
 body {
-  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -71,7 +70,7 @@ section.project-pane {
 
 section.profile {
   background-color: #FFFFFF;
-  width: 39%;
+  width: 39.3939394%;
   height: 100%;
   position: relative;
   float: right;
@@ -86,15 +85,15 @@ section.profile.inactive {
 section.projects.inactive {
   position: fixed;
   width: 100%;
+  /*right: 65%;*/
   transform: translateX(-65%);
 }
 
 section.projects {
   position: absolute;
-  float: left;
   left: 0;
   top: 0;
-  width: 61%;
+  width: 60.6060606%;
   height: 100%;
 }
 
@@ -248,7 +247,8 @@ div.profile-intro {
 img.headshot {
   position: absolute;
   display: block;
-  width: 65%;
+  max-width: 65%;
+  max-height: 550px;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
