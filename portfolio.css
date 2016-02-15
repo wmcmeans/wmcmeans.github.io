@@ -14,8 +14,8 @@
 }
 
 @font-face {
-  font-family: "CT-it";
-  src: url("./lib/fonts/CSTD-ital.otf")
+  font-family: "RHL-it";
+  src: url("./lib/fonts/RHL-ital.otf")
 }
 
 /* RESET */
@@ -170,10 +170,24 @@ a.button-link:hover {
   transition: all 0.1s;
 }
 
+article.project-details {
+  box-sizing: border-box;
+  max-width: 80%;
+  margin: 120px auto 40px auto;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (min-width: 1800px) {
+  article.project-details {
+    max-width: 960px;
+  }
+}
+
 div.main-img-container {
   position: relative;
-  width: 100%;
-  margin: 7% auto 80px auto;
+  max-width: 100%;
+  margin: 0 auto 40px auto;
 }
 
 img.macbook {
@@ -201,18 +215,9 @@ div.screenshot-inner-container {
 
 img.project-screenshot {
   position: absolute;
-  /*bottom: 0;*/
   display: block;
   max-width: 100%;
   min-height: 100%;
-}
-
-article.project-details {
-  width: 77%;
-  margin: 40px auto;
-  padding: 40px;
-  font-size: 16px;
-  line-height: 24px;
 }
 
 section.project-description {
@@ -221,8 +226,14 @@ section.project-description {
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
 
+section.project-description > p {
+  margin: 8px 0;
+  font-size: 1.25em;
+  line-height: 2em;
+  font-family: "RHL-it", Helvetica, sans-serif;
+}
+
 section.project-description > ul {
-  margin-top: 8px;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
 
