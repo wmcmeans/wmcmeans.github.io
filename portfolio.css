@@ -335,6 +335,25 @@ div.details a {
   color: #E83A03;
 }
 
+div.details > ul {
+  width: 33%;
+  float: left;
+}
+
+div.details li {
+  margin: 5px 0;
+}
+
+div.details li:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+  div.details > ul {
+    width: 100%;
+  }
+}
+
 div.credits {
   position: absolute;
   left: 110px;
