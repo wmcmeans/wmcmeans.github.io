@@ -47,6 +47,7 @@ body {
 main {
   position: relative;
   width: 165%;
+  height: 100%;
 }
 
 section.left-nav-column {
@@ -74,20 +75,27 @@ section.profile {
   height: 100%;
   position: relative;
   float: right;
+  box-sizing: border-box;
+  padding: 110px;
 }
 
 section.projects {
   position: relative;
+  float: left;
+  left: 0;
+  top: 0;
   width: 61%;
+  height: 100%;
 }
 
 div.overlay {
   position: absolute;
-  z-index: 10;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: #000000;
-  opacity: 0.5;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s;
   cursor: pointer;
 }
@@ -117,22 +125,28 @@ ul.nav-list {
   opacity: 1;
 }
 
-a.profile-link {
+a.top-link {
   display: block;
   position: absolute;
   top: 60px;
   padding: 7px 15px;
-  right: 110px;
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
   color: #E53C1B;
-  border: 1px solid #E53C1B;
-  border-radius: 3px;
   line-height: 23px;
   transition: all 0.1s;
 }
 
-a.profile-link:hover {
+a.profile-link {
+  right: 110px;
+}
+
+a.button-link {
+  border: 1px solid #E53C1B;
+  border-radius: 3px;
+}
+
+a.button-link:hover {
   color: #FFFFFF;
   background-color: #E53C1B;
   transition: all 0.1s;
@@ -169,6 +183,22 @@ div.project-links {
 div.project-links > a {
   font-weight: bold;
   margin-right: 10px;
+}
+
+img.headshot {
+  display: block;
+  position: absolute;
+  right: 110px;
+  width: 45%;
+}
+
+p.brief-description {
+  position: absolute;
+  top: 350px;
+  width: 55%;
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+  font-size: 2.5em;
+  line-height: 1.5;
 }
 
 /* Rectangle 7: */
