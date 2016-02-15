@@ -13,6 +13,11 @@
   src: url("./lib/fonts/CSTD-bk.otf")
 }
 
+@font-face {
+  font-family: "CT-it";
+  src: url("./lib/fonts/CSTD-ital.otf")
+}
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -46,7 +51,6 @@ body {
 main {
   position: relative;
   width: 165%;
-  height: 100%;
 }
 
 section.left-nav-column {
@@ -85,8 +89,7 @@ section.profile.inactive {
 section.projects.inactive {
   position: fixed;
   width: 100%;
-  /*right: 65%;*/
-  transform: translateX(-65%);
+  left: -65%;
 }
 
 section.projects {
@@ -179,7 +182,7 @@ img.macbook {
   width: 100%;
 }
 
-div.screenshot-container {
+div.screenshot-outer-container {
   width: 75%;
   height: 81%;
   top: 6.7%;
@@ -189,16 +192,23 @@ div.screenshot-container {
   overflow: hidden;
 }
 
-img.project-screenshot {
+div.screenshot-inner-container {
   position: relative;
   top: 0;
+  left: 0;
+  height: 100%;
+}
+
+img.project-screenshot {
+  position: absolute;
+  /*bottom: 0;*/
   display: block;
   max-width: 100%;
   min-height: 100%;
 }
 
 article.project-details {
-  width: 60%;
+  width: 77%;
   margin: 40px auto;
   padding: 40px;
   font-size: 16px;
@@ -206,7 +216,7 @@ article.project-details {
 }
 
 section.project-description {
-  width: 90%;
+  width: 95%;
   margin: auto;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
