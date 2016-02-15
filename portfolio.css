@@ -216,6 +216,10 @@ a.resume-link {
   margin-top: 7px;
 }
 
+a.resume-link > img {
+  height: 0.75em;
+}
+
 div.profile-intro {
   position: relative;
   height: 80%;
@@ -234,6 +238,17 @@ p.brief-description {
   width: 55%;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
   line-height: 1.5;
+}
+
+p.brief-description:after {
+  display: block;
+  position: absolute;
+  bottom: -3.5em;
+  background-image: url(./lib/images/large-arrow-1.png);
+  background-size: 0.561em 1.75em;
+  width: 0.561em;
+  height: 1.75em;
+  content:"";
 }
 
 @media (max-width: 999px) {
