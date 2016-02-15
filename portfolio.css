@@ -174,7 +174,22 @@ div.main-img-container {
 }
 
 img.macbook {
+  z-index: 1;
   display: block;
+  width: 100%;
+}
+
+div.screenshot-container {
+  width: 75%;
+  height: 81%;
+  top: 6.7%;
+  left: 50.25%;
+  transform: translateX(-50.25%);
+  position: absolute;
+  overflow: hidden;
+}
+
+img.project-screenshot {
   width: 100%;
 }
 
