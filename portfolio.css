@@ -173,7 +173,7 @@ a.button-link:hover {
 article.project-details {
   box-sizing: border-box;
   max-width: 80%;
-  margin: 120px auto 40px auto;
+  margin: 120px auto 10px auto;
   font-size: 16px;
   line-height: 24px;
 }
@@ -186,7 +186,7 @@ article.project-details {
 
 div.main-img-container {
   position: relative;
-  max-width: 85%;
+  max-width: 75%;
   margin: 0 auto 40px auto;
 }
 
