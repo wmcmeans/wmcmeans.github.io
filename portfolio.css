@@ -190,7 +190,11 @@ div.screenshot-container {
 }
 
 img.project-screenshot {
-  width: 100%;
+  position: relative;
+  top: 0;
+  display: block;
+  max-width: 100%;
+  min-height: 100%;
 }
 
 article.project-details {
