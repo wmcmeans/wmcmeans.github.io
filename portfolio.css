@@ -79,8 +79,18 @@ section.profile {
   padding: 110px;
 }
 
+section.profile.inactive {
+  display: none;
+}
+
+section.projects.inactive {
+  position: fixed;
+  width: 100%;
+  transform: translateX(-65%);
+}
+
 section.projects {
-  position: relative;
+  position: absolute;
   float: left;
   left: 0;
   top: 0;
@@ -231,8 +241,7 @@ p.brief-description {
 }
 
 section.about-me {
-  width: 80%;
-  margin: auto;
+  margin: 50px;
 }
 
 div.category {
