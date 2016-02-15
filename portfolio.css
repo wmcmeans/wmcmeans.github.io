@@ -61,7 +61,7 @@ section.left-nav-column {
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
 }
 
-section.project-content {
+section.project-pane {
   position: relative;
   float: left;
   background-color: #F2F3EF;
@@ -139,7 +139,6 @@ a.top-link {
   display: block;
   position: absolute;
   top: 60px;
-  padding: 7px 15px;
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
   color: #E53C1B;
@@ -152,6 +151,7 @@ a.profile-link {
 }
 
 a.button-link {
+  padding: 7px 15px;
   border: 1px solid #E53C1B;
   border-radius: 3px;
 }
@@ -164,7 +164,7 @@ a.button-link:hover {
 
 div.main-img-container {
   position: relative;
-  width: 70%;
+  width: 100%;
   margin: 15% auto 80px auto;
 }
 
@@ -175,13 +175,23 @@ img.macbook {
 
 article.project-description {
   width: 57%;
-  margin: auto;
+  margin: 40px auto;
+  padding: 40px;
   font-size: 16px;
   line-height: 24px;
 }
 
 article.project-description > p {
   font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+article.project-description ul {
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+article.project-description ul > li:before {
+  content: "- ";
+  color: rgb(101, 101, 101);
 }
 
 div.project-links {
@@ -195,9 +205,13 @@ div.project-links > a {
   margin-right: 10px;
 }
 
+a.resume-link {
+  left: 110px;
+  margin-top: 7px;
+}
+
 div.profile-intro {
   position: relative;
-  margin: 50px;
   height: 80%;
 }
 
@@ -241,21 +255,51 @@ p.brief-description {
 }
 
 section.about-me {
-  margin: 50px;
+  margin: 50px 0;
 }
 
 div.category {
-  width: 33%;
+  width: 35%;
   float: left;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
   font-size: 1.5em;
 }
 
 div.details {
-  width: 67%;
+  padding-top: 6px;
+  width: 65%;
   float: right;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
   font-size: 1.2em;
+}
+
+div.details > p {
+  margin-bottom: 50px;
+}
+
+div.details p > span {
+  display: block;
+  float: left;
+  width: 20%;
+}
+
+div.details a {
+  display: block;
+  margin: 3px;
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  color: #E83A03;
+}
+
+div.credits {
+  position: absolute;
+  left: 110px;
+  bottom: 60px;
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+div.credits a {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  color: #E83A03;
 }
 
 /* Rectangle 7: */
