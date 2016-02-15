@@ -304,6 +304,10 @@ div.details p > span {
   width: 20%;
 }
 
+div.details span > i {
+  color: #E83A03;
+}
+
 div.details a {
   display: block;
   margin: 3px;
