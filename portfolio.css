@@ -185,20 +185,30 @@ div.project-links > a {
   margin-right: 10px;
 }
 
+div.profile-intro {
+  margin: 50px;
+  height: 80%;
+}
+
 img.headshot {
+  float: right;
   display: block;
-  position: absolute;
-  right: 110px;
   width: 45%;
 }
 
 p.brief-description {
   position: absolute;
-  top: 350px;
+  top: 45%;
+  transform: translateY(-50%);
   width: 55%;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
   font-size: 2.5em;
   line-height: 1.5;
+}
+
+section.about-me {
+  width: 80%;
+  margin: auto;
 }
 
 /* Rectangle 7: */
