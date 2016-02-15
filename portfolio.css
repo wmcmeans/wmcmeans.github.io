@@ -171,7 +171,7 @@ a.button-link:hover {
 div.main-img-container {
   position: relative;
   width: 100%;
-  margin: 15% auto 80px auto;
+  margin: 7% auto 80px auto;
 }
 
 img.macbook {
@@ -179,23 +179,26 @@ img.macbook {
   width: 100%;
 }
 
-article.project-description {
-  width: 57%;
+article.project-details {
+  width: 60%;
   margin: 40px auto;
   padding: 40px;
   font-size: 16px;
   line-height: 24px;
 }
 
-article.project-description > p {
+section.project-description {
+  width: 90%;
+  margin: auto;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
 
-article.project-description ul {
+section.project-description > ul {
+  margin-top: 8px;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
 
-article.project-description ul > li:before {
+section.project-description li:before {
   content: "- ";
   color: rgb(101, 101, 101);
 }
@@ -211,9 +214,26 @@ div.project-links > a {
   margin-right: 10px;
 }
 
+div.resume-link-container {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 67px 0 20px 110px;
+  right: 0;
+  top: 0;
+}
+
+div.resume-link-container.sticky {
+  width: 65%;
+  position: fixed;
+}
+
 a.resume-link {
-  left: 110px;
-  margin-top: 7px;
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  font-size: 18px;
+  color: #E53C1B;
+  line-height: 23px;
 }
 
 a.resume-link > img {
@@ -222,17 +242,21 @@ a.resume-link > img {
 
 div.profile-intro {
   position: relative;
-  height: 80%;
+  height: 90vh;
 }
 
 img.headshot {
-  float: right;
+  position: absolute;
   display: block;
   width: 65%;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 p.brief-description {
   position: absolute;
+  z-index: 2;
   top: 50%;
   transform: translateY(-50%);
   width: 55%;
@@ -302,10 +326,6 @@ div.details p > span {
   display: block;
   float: left;
   width: 20%;
-}
-
-div.details span > i {
-  color: #E83A03;
 }
 
 div.details a {
