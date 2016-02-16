@@ -370,6 +370,7 @@ div.details {
 
 div.details > p {
   margin-bottom: 50px;
+  line-height: 1.7;
 }
 
 div.details p > span {
