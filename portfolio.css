@@ -181,18 +181,17 @@ a.button-link:hover {
 }
 
 article.project-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);;
   box-sizing: border-box;
-  max-width: 80%;
-  margin: 120px auto 10px auto;
+  padding-top: 25px;
+  width: 80%;
   font-size: 16px;
   line-height: 24px;
 }
 
-@media (min-width: 1800px) {
-  article.project-details {
-    max-width: 960px;
-  }
-}
 
 div.main-img-container {
   position: relative;
