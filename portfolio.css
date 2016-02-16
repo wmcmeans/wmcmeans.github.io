@@ -132,11 +132,21 @@ ul.nav-list {
   margin: 30px 0;
   opacity: 0.3;
   cursor: pointer;
+  transition: all 0.1s;
 }
 
 li.project-link.active {
   opacity: 1;
   cursor: default;
+}
+
+li.project-link:hover {
+  opacity: 0.6;
+  transition: all 0.1s;
+}
+
+li.project-link.active:hover {
+  opacity: 1;
 }
 
 .nav-list > li.active {
