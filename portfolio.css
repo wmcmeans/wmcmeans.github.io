@@ -255,12 +255,13 @@ section.project-description li:before {
 div.project-links {
   font-family: 'CT-bk', Helvetica, sans-serif;
   margin-top: 20px;
+  font-size: 1.3em;
   color: #E53C1B;
 }
 
 div.project-links > a {
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 div.resume-link-container {
