@@ -409,6 +409,7 @@ div.credits {
   position: absolute;
   left: 110px;
   bottom: 60px;
+  padding-right: 110px;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
 }
 
