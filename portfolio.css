@@ -380,29 +380,32 @@ div.details p > span {
 }
 
 div.details a {
-  display: block;
   margin: 3px;
   font-family: 'CT-bk', Helvetica, sans-serif;
   color: #E83A03;
 }
 
-div.details > ul {
+ul.skills-list {
   width: 33%;
   float: left;
 }
 
-div.details li {
+ul.skills-list > li {
   margin: 5px 0;
 }
 
-div.details li:first-child {
+ul.skills-list > li:first-child {
   margin-top: 0;
 }
 
 @media (max-width: 1100px) {
-  div.details > ul {
+  div.details > ul.skills-list {
     width: 100%;
   }
+}
+
+ul.contact-list {
+  margin-bottom: 5px;
 }
 
 div.credits {
