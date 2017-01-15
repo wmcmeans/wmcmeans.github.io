@@ -1,0 +1,478 @@
+@font-face {
+  font-family: "RT";
+  src: url("../../dist/fonts/RT-reg.otf")
+}
+
+@font-face {
+  font-family: "RHL";
+  src: url("../../dist/fonts/RHL-reg.otf")
+}
+
+@font-face {
+  font-family: "CT-bk";
+  src: url("../../dist/fonts/CSTD-bk.otf")
+}
+
+@font-face {
+  font-family: "RHL-it";
+  src: url("../../dist/fonts/RHL-ital.otf")
+}
+
+/* RESET */
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, figure, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  list-style: none;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  width: 165%;
+}
+
+section.left-nav-column {
+  position: relative;
+  box-sizing: border-box;
+  float: left;
+  background-color: #FFFFFF;
+  width: 33%;
+  height: 100vh;
+  padding: 70px 110px;
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+}
+
+section.project-pane {
+  position: relative;
+  float: left;
+  background-color: #F2F3EF;
+  width: 67%;
+  min-height: 100vh;
+}
+
+section.profile {
+  background-color: #FFFFFF;
+  width: 39.3939394%;
+  height: 100%;
+  position: relative;
+  float: right;
+  box-sizing: border-box;
+  padding: 110px;
+}
+
+section.profile.inactive {
+  display: none;
+}
+
+section.projects.inactive {
+  position: fixed;
+  width: 100%;
+  left: -65%;
+}
+
+section.projects {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60.6060606%;
+  height: 100%;
+}
+
+div.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+div.overlay.inactive {
+  display: none;
+  transition: all 0.3s;
+}
+
+h2.name-title {
+  font-size: 1.5em;
+}
+
+ul.nav-list {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+}
+
+.nav-list > li {
+  margin: 30px 0;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+li.project-link.active {
+  opacity: 1;
+  cursor: default;
+}
+
+li.project-link:hover {
+  opacity: 0.6;
+  transition: all 0.1s;
+}
+
+li.project-link.active:hover {
+  opacity: 1;
+}
+
+.nav-list > li.active {
+  opacity: 1;
+}
+
+a.top-link {
+  display: block;
+  position: absolute;
+  top: 60px;
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  font-size: 18px;
+  color: #E53C1B;
+  line-height: 23px;
+  transition: all 0.1s;
+}
+
+a.profile-link {
+  right: 110px;
+}
+
+a.button-link {
+  padding: 7px 15px;
+  border: 1px solid #E53C1B;
+  border-radius: 3px;
+}
+
+a.button-link:hover {
+  color: #FFFFFF;
+  background-color: #E53C1B;
+  transition: all 0.1s;
+}
+
+article.project-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);;
+  box-sizing: border-box;
+  padding-top: 25px;
+  width: 80%;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+
+div.main-img-container {
+  position: relative;
+  max-width: 75%;
+  margin: 0 auto 40px auto;
+}
+
+img.macbook {
+  z-index: 1;
+  display: block;
+  width: 100%;
+}
+
+div.screenshot-outer-container {
+  width: 75%;
+  height: 81%;
+  top: 6.7%;
+  left: 50.25%;
+  transform: translateX(-50.25%);
+  position: absolute;
+  overflow: hidden;
+}
+
+div.screenshot-inner-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+img.project-screenshot {
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+section.project-description {
+  width: 95%;
+  margin: auto;
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+section.project-description > p {
+  margin: 8px 0;
+  font-size: 1.25em;
+  line-height: 2em;
+  font-family: "RHL-it", Helvetica, sans-serif;
+}
+
+section.project-description > ul {
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+section.project-description li:before {
+  content: "- ";
+  color: rgb(101, 101, 101);
+}
+
+div.project-links {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: #E53C1B;
+}
+
+div.project-links > a {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+div.resume-link-container {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 67px 0 20px 110px;
+  right: 0;
+  top: 0;
+}
+
+div.resume-link-container.sticky {
+  width: 65%;
+  position: fixed;
+}
+
+a.resume-link {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  font-size: 18px;
+  color: #E53C1B;
+  line-height: 23px;
+}
+
+a.resume-link > img {
+  height: 0.75em;
+}
+
+div.profile-intro {
+  position: relative;
+  height: 90vh;
+}
+
+img.headshot {
+  position: absolute;
+  display: block;
+  max-width: 65%;
+  max-height: 550px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+p.brief-description {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55%;
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+  line-height: 1.5;
+}
+
+p.brief-description:after {
+  display: block;
+  position: absolute;
+  bottom: -3.5em;
+  background-image: url(../../dist/images/large-arrow-1.png);
+  background-size: 0.561em 1.75em;
+  width: 0.561em;
+  height: 1.75em;
+  content:"";
+}
+
+@media (max-width: 999px) {
+  p.brief-description {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 1100px) {
+  p.brief-description {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 1400px) {
+  p.brief-description {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1800px) {
+  p.brief-description {
+    font-size: 2.5em;
+  }
+}
+
+section.about-me {
+  margin: 50px 0;
+}
+
+div.category {
+  width: 35%;
+  float: left;
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+  font-size: 1.5em;
+}
+
+div.details {
+  padding-top: 6px;
+  width: 65%;
+  float: right;
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+  font-size: 1.2em;
+}
+
+div.details > p {
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+div.details p > span {
+  display: block;
+  float: left;
+  width: 20%;
+}
+
+div.details a {
+  margin: 3px;
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  color: #E83A03;
+}
+
+ul.skills-list {
+  width: 33%;
+  float: left;
+}
+
+ul.skills-list > li {
+  margin: 5px 0;
+}
+
+ul.skills-list > li:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+  div.details > ul.skills-list {
+    width: 100%;
+  }
+}
+
+ul.contact-list {
+  margin-bottom: 5px;
+}
+
+div.credits {
+  position: absolute;
+  left: 110px;
+  bottom: 60px;
+  padding-right: 110px;
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+div.credits a {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+  color: #E83A03;
+}
+
+// /* Rectangle 7: */
+// background: ;
+// /* Github: */
+// font-family: CircularStd-Book;
+// font-size: 14px;
+// color: #E53C1B;
+// line-height: 18px;
+// /* View Project: */
+// font-family: CircularStd-Book;
+// font-size: 14px;
+// color: #E53C1B;
+// line-height: 18px;
+// /* Lorem ipsum dolor si: */
+// font-family: RomainTextTrial;
+// font-size: 14px;
+// color: #000000;
+// line-height: 20px;
+// /* Mask: */
+// /* macboog-retina-big: */
+// /* Mask: */
+// /* Screen Shot 2016-02-08 at 11.51.47 PM: */
+// /* Mask: */
+// /* Screen Shot 2016-02-08 at 11.51.50 PM: */
+// /* Rectangle 8: */
+// background: #FFFFFF;
+// /* Will McMeans: */
+// font-family: RomainHeadlineTrial;
+// font-size: 18px;
+// color: #000000;
+// line-height: 28px;
+// /* default: */
+// background: #000000;
+// border: 1px solid #FFFFFF;
+// /* Cookbook: */
+// font-family: RomainHeadlineTrial;
+// font-size: 36px;
+// color: #000000;
+// line-height: 44px;
+// /* Spots: */
+// opacity: 0.3;
+// font-family: RomainHeadlineTrial;
+// font-size: 36px;
+// color: #000000;
+// line-height: 44px;
+// /* Rails Light: */
+// opacity: 0.3;
+// font-family: RomainHeadlineTrial;
+// font-size: 36px;
+// color: #000000;
+// line-height: 44px;
+// /* Profile: */
+// font-family: CircularStd-Book;
+// font-size: 18px;
+// color: #E53C1B;
+// line-height: 23px;
