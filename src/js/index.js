@@ -1,4 +1,10 @@
-import $ from 'jquery';
+const queryEl = selector => (document.querySelector(selector));
+const queryElAll = selector => (document.querySelectorAll(selector));
+const ACTIVE = 'active';
+const INACTIVE = 'inactive';
+const STICKY = 'sticky';
+const VISIBLE = 'visible';
+const ANIMATION_COMPLETE = 'animation-complete';
 
 const COOKBOOK = {
   img: 'cookbook-screenshot-resized.jpg',
@@ -53,7 +59,7 @@ function createProjectHTML(projectName) {
                 </div>
                 <section class="project-description">
                   <p>${project.description}</p>
-                  <div class="project-links">
+                  <div class="external-project-links">
                   ${Object.entries(project.links).map(([name, link]) => (
                       `<a target="_blank" href="${link}">${name}</a>`
                     )).join('\n')}
@@ -62,82 +68,82 @@ function createProjectHTML(projectName) {
   return html;
 }
 
+// TODO: Remove jQuery
 function animateScreenshot() {
-  const screenshot = $('img.project-screenshot');
-  const containerHeight = $('div.screenshot-inner-container').height();
-  const ssHeight = screenshot.height();
-  screenshot.animate({ top: `-${ssHeight - containerHeight}` }, {
-    duration: 1500,
-    specialEasing: {
-      bottom: 'easeInOutQuad',
-    },
-    complete() {
-      screenshot.css({ bottom: 0, top: '' });
-    },
-  });
+  const screenshot = queryEl('.project-screenshot');
+  screenshot.classList.remove(ANIMATION_COMPLETE);
+
+  const containerHeight = queryEl('.screenshot-inner-container').offsetHeight;
+  const { height: ssHeight } = screenshot.getBoundingClientRect();
+  const top = `${-(ssHeight - containerHeight)}px`;
+
+  const duration = 1500;
+  screenshot.animate(
+    [{ top: 0, easing: 'ease-in' },
+    { top, easing: 'ease-out' }],
+    duration,
+  );
+
+  setTimeout(() => screenshot.classList.add(ANIMATION_COMPLETE), duration);
 }
 
-function toggleProfileView(e) {
-  e.preventDefault();
+function toggleProfileView(event) {
+  event.preventDefault();
 
-  $('div.overlay').removeClass('inactive');
-  $('section.profile').removeClass('inactive');
-  $('main').addClass('inactive');
+  queryEl('.overlay').classList.remove(INACTIVE);
+  queryEl('.profile').classList.remove(INACTIVE);
+  queryEl('main').classList.add(INACTIVE);
 
   setTimeout(() => {
-    $('section.projects').addClass('inactive');
-    $('div.resume-link-container').addClass('sticky');
+    queryEl('.projects').classList.add(INACTIVE);
+    queryEl('.resume-link-container').classList.add(STICKY);
   }, 1000);
-  // $('main').animate({ left: '-65%' }, {
-  //   duration: 1000,
-  //   specialEasing: {
-  //     left: 'easeInOutQuad',
-  //   },
-  //   always() {
-  //   },
-  // });
 }
 
 function toggleProjectView(event) {
   event.preventDefault();
 
-  function shiftLeft() {
-    $('div.resume-link-container').removeClass('sticky');
-    $('section.projects').removeClass('inactive');
-    $('main').removeClass('inactive');
+  queryEl('.resume-link-container').classList.remove(STICKY);
+  queryEl('.projects').classList.remove(INACTIVE);
+  queryEl('main').classList.remove(INACTIVE);
+  queryEl('body').scrollTop = 0;
 
-    setTimeout(() => {
-      $('div.overlay').addClass('inactive');
-      $('section.profile').addClass('inactive');
-    }, 1000);
-  }
+  setTimeout(() => {
+    queryEl('.overlay').classList.add(INACTIVE);
+    queryEl('.profile').classList.add(INACTIVE);
+  }, 1000);
 
-  $('html, body').animate({
-    scrollTop: 0,
-  }, 600, shiftLeft);
+  // $('html, body').animate({
+  //   scrollTop: 0,
+  // }, 600, shiftLeft);
 }
 
-$(() => {
-  function switchProjectView(e) {
-    if (e.target === $('li.project-link.active')[0]) return;
+document.addEventListener('DOMContentLoaded', () => {
+  function switchProjectView(event) {
+    if (event.target === queryEl('.project-link.active')) return;
 
-    const target = e.target || $('li.project-link.cookbook')[0];
+    const target = event.target || queryEl('.project-link.cookbook');
     window.clearTimeout(window.animateSS);
 
-    $('li.project-link').removeClass('active');
-    $(target).addClass('active');
+    const projectLinks = queryElAll('.project-link');
+    projectLinks.forEach(el => el.classList.remove(ACTIVE));
+    target.classList.add(ACTIVE);
 
-    const html = createProjectHTML(target.innerHTML);
+    const projectHtml = createProjectHTML(target.innerHTML);
 
-    $('img.project-screenshot').css('bottom', 0);
-    $('article.project-details').hide().html(html).fadeIn(500);
+    const projectDetails = queryEl('.project-details');
+    projectDetails.classList.remove(VISIBLE);
+    window.setTimeout(() => {
+      projectDetails.innerHTML = projectHtml;
+      projectDetails.classList.add(VISIBLE);
+    }, 200);
 
     window.animateSS = window.setTimeout(animateScreenshot, 2600);
   }
 
-  $('a.profile-link').click(toggleProfileView);
-  $('div.overlay').click(toggleProjectView);
+  queryEl('.profile-link').addEventListener('click', toggleProfileView);
+  queryEl('.overlay').addEventListener('click', toggleProjectView);
 
   switchProjectView('');
-  $('li.project-link').click(switchProjectView);
+  queryElAll('.project-link').forEach(el => el.addEventListener('click', switchProjectView));
 });
