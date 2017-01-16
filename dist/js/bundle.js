@@ -140,10 +140,26 @@
 	  }, duration);
 	}
 	
+	function toggleOverlay() {
+	  var fadeIn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+	
+	  if (fadeIn) {
+	    overlay.classList.add(VISIBLE);
+	    setTimeout(function () {
+	      return overlay.classList.remove(INACTIVE);
+	    }, 0);
+	  } else {
+	    overlay.classList.add(INACTIVE);
+	    setTimeout(function () {
+	      return overlay.classList.remove(VISIBLE);
+	    }, 300);
+	  }
+	}
+	
 	function toggleProfileView(event) {
 	  event.preventDefault();
 	
-	  overlay.classList.remove(INACTIVE);
+	  toggleOverlay();
 	  profileSection.classList.remove(INACTIVE);
 	  main.classList.add(INACTIVE);
 	
@@ -159,9 +175,9 @@
 	  resumeLinkContainer.classList.remove(STICKY);
 	  projectSection.classList.remove(INACTIVE);
 	  main.classList.remove(INACTIVE);
+	  toggleOverlay(false);
 	
 	  setTimeout(function () {
-	    overlay.classList.add(INACTIVE);
 	    profileInner.scrollTop = 0;
 	    profileSection.classList.add(INACTIVE);
 	  }, 1000);

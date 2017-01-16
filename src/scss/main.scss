@@ -24,6 +24,8 @@ $left-shift: -($total-canvas-width - 100%);
 $nav-width: 33%;
 $profile-width: -$left-shift;
 $profile-width-out-of-total-canvas: (($total-canvas-width - 100%) / $total-canvas-width) * 100%;
+$pane-side-padding: 6.875rem;
+$pane-vert-padding: 3.75rem;
 
 @mixin font-rt {
   font-family: 'RT', Garamond, 'Times New Roman', serif;
@@ -61,6 +63,10 @@ span, article, footer, time, small {
   list-style: none;
 }
 
+html {
+  font-size: 16px;
+}
+
 .group:after {
   content: "";
   display: block;
@@ -89,44 +95,53 @@ main {
   background-color: #FFFFFF;
   width: $nav-width;
   height: 100vh;
-  padding: 70px 0;
   display: flex;
   justify-content: center;
-  .left-nav-content {
-    height: 100%;
-    .name-title {
-      cursor: default;
-      font-size: 1.5em;
-      width: 100%;
+  position: relative;
+  align-items: center;
+  .name-title {
+    position: absolute;
+    top: 70px;
+    cursor: default;
+    font-size: 1.5rem;
+  }
+}
+
+.project-link {
+  font-size: 3rem;
+  margin: 1.875rem 0;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 100ms;
+  &.active {
+    opacity: 1;
+    cursor: default;
+    &:hover {
+      opacity: 1;
     }
-    .nav-list {
-      font-size: 3em;
-      .project-link {
-        margin: 30px 0;
-        opacity: 0.3;
-        cursor: pointer;
-        transition: all 0.1s;
-        &.active {
-          opacity: 1;
-          cursor: default;
-          &:hover {
-            opacity: 1;
-          }
-        }
-        &:hover {
-          opacity: 0.6;
-          transition: all 0.1s;
-        }
-      }
-    }
+  }
+  &:hover {
+    opacity: 0.6;
   }
 }
 
 .project-pane {
-  position: relative;
   background-color: #F2F3EF;
   width: 100% - $nav-width;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .project-details {
+    box-sizing: border-box;
+    margin-top: 1.5rem;
+    width: 80%;
+    opacity: 0;
+    transition: opacity 200ms;
+    &.visible {
+      opacity: 1;
+    }
+  }
 }
 
 .profile {
@@ -140,22 +155,21 @@ main {
     overflow-y: scroll;
     height: 100vh;
     box-sizing: border-box;
-    padding: 110px 110px 40px 110px;
+    padding: $pane-vert-padding $pane-side-padding $pane-vert-padding $pane-side-padding;
   }
   .resume-link-container {
     position: absolute;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.8);
     width: 100%;
-    padding: 67px 0 20px 110px;
+    padding: 4rem 0 1.25rem $pane-side-padding;
     box-sizing: border-box;
     .resume-link {
       @include font-ct-bk;
-      font-size: 18px;
+      font-size: 1.125rem;
       color: $accent-color;
-      line-height: 23px;
       img {
-        height: 0.75em;
+        height: 0.9rem;
       }
     }
   }
@@ -171,69 +185,50 @@ main {
     width: 100%;
     height: 100vh;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s;
+    background-color: #000000;
+    opacity: 0.5;
+    transition: opacity 300ms;
     cursor: pointer;
+    display: none;
+    &.visible {
+      display: block;
+    }
     &.inactive {
-      display: none;
-      transition: all 0.3s;
+      opacity: 0;
     }
   }
 }
 
 .top-link {
-  @include font-ct-bk;
-  display: block;
-  position: absolute;
-  top: 60px;
-  font-size: 18px;
-  color: $accent-color;
-  line-height: 23px;
-  transition: all 0.1s;
 }
 
 .profile-link {
-  right: 110px;
-}
-
-.button-link {
-  padding: 7px 15px;
+  @include font-ct-bk;
+  display: block;
+  position: absolute;
+  top: $pane-vert-padding;
+  right: $pane-side-padding;
+  font-size: 1.125rem;
+  color: $accent-color;
+  padding: 0.5rem 1rem;
   border: 1px solid $accent-color;
-  border-radius: 3px;
+  border-radius: 0.2rem;
+  transition: background-color 100ms, color 100ms;
   &:hover {
     color: #FFFFFF;
     background-color: $accent-color;
-    transition: all 0.1s;
-  }
-}
-
-.project-details {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  box-sizing: border-box;
-  padding-top: 25px;
-  width: 80%;
-  font-size: 16px;
-  line-height: 24px;
-  opacity: 0;
-  transition: opacity 200ms;
-  &.visible {
-    opacity: 1;
   }
 }
 
 .main-img-container {
   position: relative;
   max-width: 75%;
-  margin: 0 auto 40px auto;
-}
-
-.macbook {
-  z-index: 1;
-  display: block;
-  width: 100%;
+  margin: 0 auto 2.5rem auto;
+  .macbook {
+    z-index: 1;
+    display: block;
+    width: 100%;
+  }
 }
 
 .screenshot-outer-container {
@@ -244,14 +239,14 @@ main {
   transform: translateX(-50.25%);
   position: absolute;
   overflow: hidden;
+  .screenshot-inner-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
 }
 
-.screenshot-inner-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
 
 .project-screenshot {
   position: absolute;
@@ -260,8 +255,6 @@ main {
   min-height: 100%;
   transition: transform 1500ms ease-in-out;
   &.animation-complete {
-    // transform: translateY(-100%);
-    // top: auto;
     bottom: 0;
   }
 }
@@ -272,27 +265,20 @@ main {
   margin: auto;
   p {
     @include font-rhl-it;
-    margin: 8px 0;
-    font-size: 1.25em;
-    line-height: 2em;
-  }
-  ul {
-    @include font-rt;
-    li:before {
-      content: "- ";
-      color: rgb(101, 101, 101);
-    }
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
   }
 }
 
 .external-project-links {
   @include font-ct-bk;
-  margin-top: 20px;
-  font-size: 1.3em;
+  margin-top: 1.25rem;
+  font-size: 1.3rem;
   color: $accent-color;
   a {
     font-weight: bold;
-    margin-right: 15px;
+    margin-right: 1rem;
   }
 }
 
@@ -305,7 +291,7 @@ main {
   position: absolute;
   display: block;
   max-width: 65%;
-  max-height: 550px;
+  max-height: 30rem;
   right: 0;
   top: 50%;
   transform: translateY(-50%);

@@ -95,10 +95,20 @@ function animateScreenshot() {
   setTimeout(() => screenshot.classList.add(ANIMATION_COMPLETE), duration);
 }
 
+function toggleOverlay(fadeIn = true) {
+  if (fadeIn) {
+    overlay.classList.add(VISIBLE);
+    setTimeout(() => (overlay.classList.remove(INACTIVE)), 0);
+  } else {
+    overlay.classList.add(INACTIVE);
+    setTimeout(() => (overlay.classList.remove(VISIBLE)), 300);
+  }
+}
+
 function toggleProfileView(event) {
   event.preventDefault();
 
-  overlay.classList.remove(INACTIVE);
+  toggleOverlay();
   profileSection.classList.remove(INACTIVE);
   main.classList.add(INACTIVE);
 
@@ -114,9 +124,9 @@ function toggleProjectView(event) {
   resumeLinkContainer.classList.remove(STICKY);
   projectSection.classList.remove(INACTIVE);
   main.classList.remove(INACTIVE);
+  toggleOverlay(false);
 
   setTimeout(() => {
-    overlay.classList.add(INACTIVE);
     profileInner.scrollTop = 0;
     profileSection.classList.add(INACTIVE);
   }, 1000);
