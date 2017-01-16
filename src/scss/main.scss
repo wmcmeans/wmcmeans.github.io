@@ -25,6 +25,22 @@ $nav-width: 33%;
 $profile-width: -$left-shift;
 $profile-width-out-of-total-canvas: (($total-canvas-width - 100%) / $total-canvas-width) * 100%;
 
+@mixin font-rt {
+  font-family: 'RT', Garamond, 'Times New Roman', serif;
+}
+
+@mixin font-rhl {
+  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+}
+
+@mixin font-rhl-it {
+  font-family: "RHL-it", Helvetica, sans-serif;
+}
+
+@mixin font-ct-bk {
+  font-family: 'CT-bk', Helvetica, sans-serif;
+}
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -67,20 +83,47 @@ main {
   }
 }
 
-.left-nav-column {
-  position: relative;
+.left-nav {
+  @include font-rhl;
   box-sizing: border-box;
-  float: left;
   background-color: #FFFFFF;
   width: $nav-width;
   height: 100vh;
-  padding: 70px 110px;
-  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+  padding: 70px 0;
+  display: flex;
+  justify-content: center;
+  .left-nav-content {
+    height: 100%;
+    .name-title {
+      cursor: default;
+      font-size: 1.5em;
+      width: 100%;
+    }
+    .nav-list {
+      font-size: 3em;
+      .project-link {
+        margin: 30px 0;
+        opacity: 0.3;
+        cursor: pointer;
+        transition: all 0.1s;
+        &.active {
+          opacity: 1;
+          cursor: default;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        &:hover {
+          opacity: 0.6;
+          transition: all 0.1s;
+        }
+      }
+    }
+  }
 }
 
 .project-pane {
   position: relative;
-  float: left;
   background-color: #F2F3EF;
   width: 100% - $nav-width;
   min-height: 100vh;
@@ -107,7 +150,7 @@ main {
     padding: 67px 0 20px 110px;
     box-sizing: border-box;
     .resume-link {
-      font-family: 'CT-bk', Helvetica, sans-serif;
+      @include font-ct-bk;
       font-size: 18px;
       color: $accent-color;
       line-height: 23px;
@@ -122,6 +165,7 @@ main {
   width: 60.6060606%;
   height: 100%;
   position: relative;
+  display: flex;
   .overlay {
     position: absolute;
     width: 100%;
@@ -137,46 +181,11 @@ main {
   }
 }
 
-
-.name-title {
-  font-size: 1.5em;
-}
-
-.nav-list {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3em;
-  li {
-    margin: 30px 0;
-    opacity: 0.3;
-    cursor: pointer;
-    transition: all 0.1s;
-    &.active {
-      opacity: 1;
-    }
-  }
-}
-
-.project-link {
-  &.active {
-    opacity: 1;
-    cursor: default;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  &:hover {
-    opacity: 0.6;
-    transition: all 0.1s;
-  }
-}
-
 .top-link {
+  @include font-ct-bk;
   display: block;
   position: absolute;
   top: 60px;
-  font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
   color: $accent-color;
   line-height: 23px;
@@ -249,7 +258,6 @@ main {
   display: block;
   max-width: 100%;
   min-height: 100%;
-  // top: 0;
   transition: transform 1500ms ease-in-out;
   &.animation-complete {
     // transform: translateY(-100%);
@@ -259,17 +267,17 @@ main {
 }
 
 .project-description {
+  @include font-rt;
   width: 95%;
   margin: auto;
-  font-family: 'RT', Garamond, 'Times New Roman', serif;
   p {
+    @include font-rhl-it;
     margin: 8px 0;
     font-size: 1.25em;
     line-height: 2em;
-    font-family: "RHL-it", Helvetica, sans-serif;
   }
   ul {
-    font-family: 'RT', Garamond, 'Times New Roman', serif;
+    @include font-rt;
     li:before {
       content: "- ";
       color: rgb(101, 101, 101);
@@ -278,7 +286,7 @@ main {
 }
 
 .external-project-links {
-  font-family: 'CT-bk', Helvetica, sans-serif;
+  @include font-ct-bk;
   margin-top: 20px;
   font-size: 1.3em;
   color: $accent-color;
@@ -304,12 +312,12 @@ main {
 }
 
 .brief-description {
+  @include font-rhl;
   position: absolute;
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
   width: 55%;
-  font-family: 'RHL', Garamond, 'Times New Roman', serif;
   line-height: 1.5;
   &:after {
     content:"";
@@ -352,17 +360,17 @@ main {
 }
 
 .category {
+  @include font-rhl;
   width: 35%;
   float: left;
-  font-family: 'RHL', Garamond, 'Times New Roman', serif;
   font-size: 1.5em;
 }
 
 .details {
+  @include font-rt;
   padding-top: 6px;
   width: 65%;
   float: right;
-  font-family: 'RT', Garamond, 'Times New Roman', serif;
   font-size: 1.2em;
   p {
     margin-bottom: 50px;
@@ -374,8 +382,8 @@ main {
     }
   }
   a {
+    @include font-ct-bk;
     margin: 3px;
-    font-family: 'CT-bk', Helvetica, sans-serif;
     color: #E83A03;
   }
 }
@@ -402,10 +410,10 @@ main {
 }
 
 .credits {
+  @include font-rt;
   margin: 0 -10px;
-  font-family: 'RT', Garamond, 'Times New Roman', serif;
   a {
-    font-family: 'CT-bk', Helvetica, sans-serif;
+    @include font-ct-bk;
     color: #E83A03;
   }
 }
