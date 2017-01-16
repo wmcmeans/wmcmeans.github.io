@@ -29,7 +29,6 @@ const TRAILS = {
   },
 };
 
-
 function createProjectHTML(projectName) {
   let project;
   switch (projectName) {
@@ -64,31 +63,20 @@ function createProjectHTML(projectName) {
   return html;
 }
 
-$(function () {
-  $('a.profile-link').click(toggleProfileView);
-  $('div.overlay').click(toggleProjectView);
-
-  switchProjectView('');
-  $('li.project-link').click(switchProjectView);
-
-  function switchProjectView(e) {
-    if (e.target == $('li.project-link.active')[0]) return;
-
-    var target = e.target || $('li.project-link.cookbook')[0];
-    window.clearTimeout(window.animateSS);
-
-    $('li.project-link').removeClass('active');
-    $(target).addClass('active');
-
-    const html = createProjectHTML(target.innerHTML);
-
-    $('img.project-screenshot').css('bottom', 0);
-    $('article.project-details').hide().html(html).fadeIn(500);
-
-    window.animateSS = window.setTimeout(animateScreenshot, 2600);
-  }
-});
-
+function animateScreenshot() {
+  const screenshot = $('img.project-screenshot');
+  const containerHeight = $('div.screenshot-inner-container').height();
+  const ssHeight = screenshot.height();
+  screenshot.animate({ top: `-${ssHeight - containerHeight}` }, {
+    duration: 1500,
+    specialEasing: {
+      bottom: 'easeInOutQuad',
+    },
+    complete() {
+      screenshot.css({ bottom: 0, top: '' });
+    },
+  });
+}
 
 function toggleProfileView(e) {
   e.preventDefault();
@@ -109,11 +97,6 @@ function toggleProfileView(e) {
 }
 
 function toggleProjectView(e) {
-  e.preventDefault();
-  $('html, body').animate({
-    scrollTop: 0,
-  }, 600, shiftLeft);
-
   function shiftLeft() {
     $('div.resume-link-container').removeClass('sticky');
     $('section.projects').removeClass('inactive');
@@ -129,19 +112,34 @@ function toggleProjectView(e) {
       },
     });
   }
+
+  e.preventDefault();
+  $('html, body').animate({
+    scrollTop: 0,
+  }, 600, shiftLeft);
 }
 
-function animateScreenshot() {
-  const screenshot = $('img.project-screenshot');
-  const containerHeight = $('div.screenshot-inner-container').height();
-  const ssHeight = screenshot.height();
-  screenshot.animate({ top: `-${ssHeight - containerHeight}` }, {
-    duration: 1500,
-    specialEasing: {
-      bottom: 'easeInOutQuad',
-    },
-    complete() {
-      screenshot.css({ bottom: 0, top: '' });
-    },
-  });
-}
+$(() => {
+  function switchProjectView(e) {
+    if (e.target === $('li.project-link.active')[0]) return;
+
+    const target = e.target || $('li.project-link.cookbook')[0];
+    window.clearTimeout(window.animateSS);
+
+    $('li.project-link').removeClass('active');
+    $(target).addClass('active');
+
+    const html = createProjectHTML(target.innerHTML);
+
+    $('img.project-screenshot').css('bottom', 0);
+    $('article.project-details').hide().html(html).fadeIn(500);
+
+    window.animateSS = window.setTimeout(animateScreenshot, 2600);
+  }
+
+  $('a.profile-link').click(toggleProfileView);
+  $('div.overlay').click(toggleProjectView);
+
+  switchProjectView('');
+  $('li.project-link').click(switchProjectView);
+});

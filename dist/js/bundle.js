@@ -108,30 +108,20 @@
 	  return html;
 	}
 	
-	(0, _jquery2.default)(function () {
-	  (0, _jquery2.default)('a.profile-link').click(toggleProfileView);
-	  (0, _jquery2.default)('div.overlay').click(toggleProjectView);
-	
-	  switchProjectView('');
-	  (0, _jquery2.default)('li.project-link').click(switchProjectView);
-	
-	  function switchProjectView(e) {
-	    if (e.target == (0, _jquery2.default)('li.project-link.active')[0]) return;
-	
-	    var target = e.target || (0, _jquery2.default)('li.project-link.cookbook')[0];
-	    window.clearTimeout(window.animateSS);
-	
-	    (0, _jquery2.default)('li.project-link').removeClass('active');
-	    (0, _jquery2.default)(target).addClass('active');
-	
-	    var html = createProjectHTML(target.innerHTML);
-	
-	    (0, _jquery2.default)('img.project-screenshot').css('bottom', 0);
-	    (0, _jquery2.default)('article.project-details').hide().html(html).fadeIn(500);
-	
-	    window.animateSS = window.setTimeout(animateScreenshot, 2600);
-	  }
-	});
+	function animateScreenshot() {
+	  var screenshot = (0, _jquery2.default)('img.project-screenshot');
+	  var containerHeight = (0, _jquery2.default)('div.screenshot-inner-container').height();
+	  var ssHeight = screenshot.height();
+	  screenshot.animate({ top: '-' + (ssHeight - containerHeight) }, {
+	    duration: 1500,
+	    specialEasing: {
+	      bottom: 'easeInOutQuad'
+	    },
+	    complete: function complete() {
+	      screenshot.css({ bottom: 0, top: '' });
+	    }
+	  });
+	}
 	
 	function toggleProfileView(e) {
 	  e.preventDefault();
@@ -152,11 +142,6 @@
 	}
 	
 	function toggleProjectView(e) {
-	  e.preventDefault();
-	  (0, _jquery2.default)('html, body').animate({
-	    scrollTop: 0
-	  }, 600, shiftLeft);
-	
 	  function shiftLeft() {
 	    (0, _jquery2.default)('div.resume-link-container').removeClass('sticky');
 	    (0, _jquery2.default)('section.projects').removeClass('inactive');
@@ -172,22 +157,37 @@
 	      }
 	    });
 	  }
+	
+	  e.preventDefault();
+	  (0, _jquery2.default)('html, body').animate({
+	    scrollTop: 0
+	  }, 600, shiftLeft);
 	}
 	
-	function animateScreenshot() {
-	  var screenshot = (0, _jquery2.default)('img.project-screenshot');
-	  var containerHeight = (0, _jquery2.default)('div.screenshot-inner-container').height();
-	  var ssHeight = screenshot.height();
-	  screenshot.animate({ top: '-' + (ssHeight - containerHeight) }, {
-	    duration: 1500,
-	    specialEasing: {
-	      bottom: 'easeInOutQuad'
-	    },
-	    complete: function complete() {
-	      screenshot.css({ bottom: 0, top: '' });
-	    }
-	  });
-	}
+	(0, _jquery2.default)(function () {
+	  function switchProjectView(e) {
+	    if (e.target === (0, _jquery2.default)('li.project-link.active')[0]) return;
+	
+	    var target = e.target || (0, _jquery2.default)('li.project-link.cookbook')[0];
+	    window.clearTimeout(window.animateSS);
+	
+	    (0, _jquery2.default)('li.project-link').removeClass('active');
+	    (0, _jquery2.default)(target).addClass('active');
+	
+	    var html = createProjectHTML(target.innerHTML);
+	
+	    (0, _jquery2.default)('img.project-screenshot').css('bottom', 0);
+	    (0, _jquery2.default)('article.project-details').hide().html(html).fadeIn(500);
+	
+	    window.animateSS = window.setTimeout(animateScreenshot, 2600);
+	  }
+	
+	  (0, _jquery2.default)('a.profile-link').click(toggleProfileView);
+	  (0, _jquery2.default)('div.overlay').click(toggleProjectView);
+	
+	  switchProjectView('');
+	  (0, _jquery2.default)('li.project-link').click(switchProjectView);
+	});
 
 /***/ },
 /* 1 */

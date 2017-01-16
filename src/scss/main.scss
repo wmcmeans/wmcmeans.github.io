@@ -53,7 +53,7 @@ main {
   width: 165%;
 }
 
-section.left-nav-column {
+.left-nav-column {
   position: relative;
   box-sizing: border-box;
   float: left;
@@ -64,7 +64,7 @@ section.left-nav-column {
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
 }
 
-section.project-pane {
+.project-pane {
   position: relative;
   float: left;
   background-color: #F2F3EF;
@@ -72,7 +72,7 @@ section.project-pane {
   min-height: 100vh;
 }
 
-section.profile {
+.profile {
   background-color: #FFFFFF;
   width: 39.3939394%;
   height: 100%;
@@ -80,27 +80,25 @@ section.profile {
   float: right;
   box-sizing: border-box;
   padding: 110px;
+  &.inactive {
+    display: none;
+  }
 }
 
-section.profile.inactive {
-  display: none;
-}
-
-section.projects.inactive {
-  position: fixed;
-  width: 100%;
-  left: -65%;
-}
-
-section.projects {
+.projects {
   position: absolute;
   left: 0;
   top: 0;
   width: 60.6060606%;
   height: 100%;
+  &.inactive {
+    position: fixed;
+    width: 100%;
+    left: -65%;
+  }
 }
 
-div.overlay {
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -110,50 +108,47 @@ div.overlay {
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s;
   cursor: pointer;
+  &.inactive {
+    display: none;
+    transition: all 0.3s;
+  }
 }
 
-div.overlay.inactive {
-  display: none;
-  transition: all 0.3s;
-}
-
-h2.name-title {
+.name-title {
   font-size: 1.5em;
 }
 
-ul.nav-list {
+.nav-list {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 3em;
+  li {
+    margin: 30px 0;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.1s;
+    &.active {
+      opacity: 1;
+    }
+  }
 }
 
-.nav-list > li {
-  margin: 30px 0;
-  opacity: 0.3;
-  cursor: pointer;
-  transition: all 0.1s;
+.project-link {
+  &.active {
+    opacity: 1;
+    cursor: default;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &:hover {
+    opacity: 0.6;
+    transition: all 0.1s;
+  }
 }
 
-li.project-link.active {
-  opacity: 1;
-  cursor: default;
-}
-
-li.project-link:hover {
-  opacity: 0.6;
-  transition: all 0.1s;
-}
-
-li.project-link.active:hover {
-  opacity: 1;
-}
-
-.nav-list > li.active {
-  opacity: 1;
-}
-
-a.top-link {
+.top-link {
   display: block;
   position: absolute;
   top: 60px;
@@ -164,23 +159,22 @@ a.top-link {
   transition: all 0.1s;
 }
 
-a.profile-link {
+.profile-link {
   right: 110px;
 }
 
-a.button-link {
+.button-link {
   padding: 7px 15px;
   border: 1px solid #E53C1B;
   border-radius: 3px;
+  &:hover {
+    color: #FFFFFF;
+    background-color: #E53C1B;
+    transition: all 0.1s;
+  }
 }
 
-a.button-link:hover {
-  color: #FFFFFF;
-  background-color: #E53C1B;
-  transition: all 0.1s;
-}
-
-article.project-details {
+.project-details {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -192,20 +186,19 @@ article.project-details {
   line-height: 24px;
 }
 
-
-div.main-img-container {
+.main-img-container {
   position: relative;
   max-width: 75%;
   margin: 0 auto 40px auto;
 }
 
-img.macbook {
+.macbook {
   z-index: 1;
   display: block;
   width: 100%;
 }
 
-div.screenshot-outer-container {
+.screenshot-outer-container {
   width: 75%;
   height: 81%;
   top: 6.7%;
@@ -215,55 +208,51 @@ div.screenshot-outer-container {
   overflow: hidden;
 }
 
-div.screenshot-inner-container {
+.screenshot-inner-container {
   position: relative;
   top: 0;
   left: 0;
   height: 100%;
 }
 
-img.project-screenshot {
+.project-screenshot {
   position: absolute;
   display: block;
   max-width: 100%;
   min-height: 100%;
 }
 
-section.project-description {
+.project-description {
   width: 95%;
   margin: auto;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
+  p {
+    margin: 8px 0;
+    font-size: 1.25em;
+    line-height: 2em;
+    font-family: "RHL-it", Helvetica, sans-serif;
+  }
+  ul {
+    font-family: 'RT', Garamond, 'Times New Roman', serif;
+    li:before {
+      content: "- ";
+      color: rgb(101, 101, 101);
+    }
+  }
 }
 
-section.project-description > p {
-  margin: 8px 0;
-  font-size: 1.25em;
-  line-height: 2em;
-  font-family: "RHL-it", Helvetica, sans-serif;
-}
-
-section.project-description > ul {
-  font-family: 'RT', Garamond, 'Times New Roman', serif;
-}
-
-section.project-description li:before {
-  content: "- ";
-  color: rgb(101, 101, 101);
-}
-
-div.project-links {
+.project-links {
   font-family: 'CT-bk', Helvetica, sans-serif;
   margin-top: 20px;
   font-size: 1.3em;
   color: #E53C1B;
+  a {
+    font-weight: bold;
+    margin-right: 15px;
+  }
 }
 
-div.project-links > a {
-  font-weight: bold;
-  margin-right: 15px;
-}
-
-div.resume-link-container {
+.resume-link-container {
   position: absolute;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.8);
@@ -271,30 +260,28 @@ div.resume-link-container {
   padding: 67px 0 20px 110px;
   right: 0;
   top: 0;
+  &.sticky {
+    width: 65%;
+    position: fixed;
+  }
 }
 
-div.resume-link-container.sticky {
-  width: 65%;
-  position: fixed;
-}
-
-a.resume-link {
+.resume-link {
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
   color: #E53C1B;
   line-height: 23px;
+  img {
+    height: 0.75em;
+  }
 }
 
-a.resume-link > img {
-  height: 0.75em;
-}
-
-div.profile-intro {
+.profile-intro {
   position: relative;
   height: 90vh;
 }
 
-img.headshot {
+.headshot {
   position: absolute;
   display: block;
   max-width: 65%;
@@ -304,7 +291,7 @@ img.headshot {
   transform: translateY(-50%);
 }
 
-p.brief-description {
+.brief-description {
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -312,113 +299,106 @@ p.brief-description {
   width: 55%;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
   line-height: 1.5;
-}
-
-p.brief-description:after {
-  display: block;
-  position: absolute;
-  bottom: -3.5em;
-  background-image: url(../../dist/images/large-arrow-1.png);
-  background-size: 0.561em 1.75em;
-  width: 0.561em;
-  height: 1.75em;
-  content:"";
+  &:after {
+    content:"";
+    display: block;
+    position: absolute;
+    bottom: -3.5em;
+    background-image: url(../../dist/images/large-arrow-1.png);
+    background-size: 0.561em 1.75em;
+    width: 0.561em;
+    height: 1.75em;
+  }
 }
 
 @media (max-width: 999px) {
-  p.brief-description {
+  .brief-description {
     font-size: 1em;
   }
 }
 
 @media (min-width: 1100px) {
-  p.brief-description {
+  .brief-description {
     font-size: 1.5em;
   }
 }
 
 @media (min-width: 1400px) {
-  p.brief-description {
+  .brief-description {
     font-size: 2em;
   }
 }
 
 @media (min-width: 1800px) {
-  p.brief-description {
+  .brief-description {
     font-size: 2.5em;
   }
 }
 
-section.about-me {
+.about-me {
   margin: 50px 0;
 }
 
-div.category {
+.category {
   width: 35%;
   float: left;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
   font-size: 1.5em;
 }
 
-div.details {
+.details {
   padding-top: 6px;
   width: 65%;
   float: right;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
   font-size: 1.2em;
+  p {
+    margin-bottom: 50px;
+    line-height: 1.7;
+    span {
+      display: block;
+      float: left;
+      width: 20%;
+    }
+  }
+  a {
+    margin: 3px;
+    font-family: 'CT-bk', Helvetica, sans-serif;
+    color: #E83A03;
+  }
 }
 
-div.details > p {
-  margin-bottom: 50px;
-  line-height: 1.7;
-}
-
-div.details p > span {
-  display: block;
-  float: left;
-  width: 20%;
-}
-
-div.details a {
-  margin: 3px;
-  font-family: 'CT-bk', Helvetica, sans-serif;
-  color: #E83A03;
-}
-
-ul.skills-list {
+.skills-list {
   width: 33%;
   float: left;
-}
-
-ul.skills-list > li {
-  margin: 5px 0;
-}
-
-ul.skills-list > li:first-child {
-  margin-top: 0;
+  li {
+    margin: 5px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 @media (max-width: 1100px) {
-  div.details > ul.skills-list {
+  .skills-list {
     width: 100%;
   }
 }
 
-ul.contact-list {
+.contact-list {
   margin-bottom: 5px;
 }
 
-div.credits {
+.credits {
   position: absolute;
   left: 110px;
   bottom: 60px;
   padding-right: 110px;
   font-family: 'RT', Garamond, 'Times New Roman', serif;
-}
-
-div.credits a {
-  font-family: 'CT-bk', Helvetica, sans-serif;
-  color: #E83A03;
+  a {
+    font-family: 'CT-bk', Helvetica, sans-serif;
+    color: #E83A03;
+  }
 }
 
 // /* Rectangle 7: */
