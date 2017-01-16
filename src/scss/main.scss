@@ -43,6 +43,11 @@ $pane-vert-padding: 3.75rem;
   font-family: 'CT-bk', Helvetica, sans-serif;
 }
 
+.default-link {
+  @include font-ct-bk;
+  color: $accent-color;
+}
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -64,7 +69,32 @@ span, article, footer, time, small {
 }
 
 html {
-  font-size: 16px;
+  font-size: 8px;
+}
+@media (min-width: 800px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media (min-width: 1025px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1281px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1441px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1681px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 .group:after {
@@ -199,9 +229,6 @@ main {
   }
 }
 
-.top-link {
-}
-
 .profile-link {
   @include font-ct-bk;
   display: block;
@@ -272,10 +299,9 @@ main {
 }
 
 .external-project-links {
-  @include font-ct-bk;
+  @extend .default-link;
   margin-top: 1.25rem;
   font-size: 1.3rem;
-  color: $accent-color;
   a {
     font-weight: bold;
     margin-right: 1rem;
@@ -303,64 +329,39 @@ main {
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
-  width: 55%;
-  line-height: 1.5;
+  width: 70%;
+  font-size: 2rem;
   &:after {
     content:"";
     display: block;
     position: absolute;
-    bottom: -3.5em;
+    bottom: -5rem;
     background-image: url(../../dist/images/large-arrow-1.png);
-    background-size: 0.561em 1.75em;
-    width: 0.561em;
-    height: 1.75em;
-  }
-}
-
-@media (max-width: 999px) {
-  .brief-description {
-    font-size: 1em;
-  }
-}
-
-@media (min-width: 1100px) {
-  .brief-description {
-    font-size: 1.5em;
-  }
-}
-
-@media (min-width: 1400px) {
-  .brief-description {
-    font-size: 2em;
-  }
-}
-
-@media (min-width: 1800px) {
-  .brief-description {
-    font-size: 2.5em;
+    background-size: 0.840625rem 2.625rem;
+    width: 0.840625rem;
+    height: 2.625rem;
   }
 }
 
 .about-me {
-  margin: 50px 0;
+  margin: 3.125rem 0;
 }
 
 .category {
   @include font-rhl;
   width: 35%;
   float: left;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 .details {
   @include font-rt;
-  padding-top: 6px;
+  padding-top: 0.375rem;
   width: 65%;
   float: right;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   p {
-    margin-bottom: 50px;
-    line-height: 1.7;
+    line-height: 2rem;
     span {
       display: block;
       float: left;
@@ -368,9 +369,7 @@ main {
     }
   }
   a {
-    @include font-ct-bk;
-    margin: 3px;
-    color: #E83A03;
+    @extend .default-link;
   }
 }
 
@@ -378,28 +377,21 @@ main {
   float: left;
   display: flex;
   flex-flow: row wrap;
-  margin-top: -5px;
+  margin-top: -0.3125rem;
   li {
     width: 33%;
-    margin: 5px 0;
-  }
-}
-
-@media (max-width: 1100px) {
-  .skills-list {
-    width: 100%;
+    margin: 0.3125rem 0;
   }
 }
 
 .contact-list {
-  margin-bottom: 5px;
+  margin-bottom: 0.375rem;
 }
 
 .credits {
+  margin-top: 1rem;
   @include font-rt;
-  margin: 0 -10px;
   a {
-    @include font-ct-bk;
-    color: #E83A03;
+    @extend .default-link;
   }
 }
