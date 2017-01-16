@@ -43,7 +43,11 @@ body {
 
 main {
   position: relative;
-  width: 165%; }
+  width: 165%;
+  transition: left 1000ms ease-in-out;
+  left: 0; }
+  main.inactive {
+    left: -65%; }
 
 .left-nav-column {
   position: relative;
@@ -64,7 +68,7 @@ main {
 
 .profile {
   background-color: #FFFFFF;
-  width: 39.3939394%;
+  width: 39.39394%;
   height: 100%;
   position: relative;
   float: right;
@@ -81,15 +85,15 @@ main {
   height: 100%; }
   .projects.inactive {
     position: fixed;
-    width: 100%;
-    left: -65%; }
+    left: -65%;
+    width: 100%; }
 
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s;

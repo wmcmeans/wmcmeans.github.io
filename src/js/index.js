@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import 'jquery-ui';
 
 const COOKBOOK = {
   img: 'cookbook-screenshot-resized.jpg',
@@ -83,37 +82,36 @@ function toggleProfileView(e) {
 
   $('div.overlay').removeClass('inactive');
   $('section.profile').removeClass('inactive');
+  $('main').addClass('inactive');
 
-  $('main').animate({ left: '-65%' }, {
-    duration: 1000,
-    specialEasing: {
-      left: 'easeInOutQuad',
-    },
-    always() {
-      $('section.projects').addClass('inactive');
-      $('div.resume-link-container').addClass('sticky');
-    },
-  });
+  setTimeout(() => {
+    $('section.projects').addClass('inactive');
+    $('div.resume-link-container').addClass('sticky');
+  }, 1000);
+  // $('main').animate({ left: '-65%' }, {
+  //   duration: 1000,
+  //   specialEasing: {
+  //     left: 'easeInOutQuad',
+  //   },
+  //   always() {
+  //   },
+  // });
 }
 
-function toggleProjectView(e) {
+function toggleProjectView(event) {
+  event.preventDefault();
+
   function shiftLeft() {
     $('div.resume-link-container').removeClass('sticky');
     $('section.projects').removeClass('inactive');
+    $('main').removeClass('inactive');
 
-    $('main').animate({ left: 0 }, {
-      duration: 1000,
-      specialEasing: {
-        left: 'easeInOutQuad',
-      },
-      always() {
-        $('div.overlay').addClass('inactive');
-        $('section.profile').addClass('inactive');
-      },
-    });
+    setTimeout(() => {
+      $('div.overlay').addClass('inactive');
+      $('section.profile').addClass('inactive');
+    }, 1000);
   }
 
-  e.preventDefault();
   $('html, body').animate({
     scrollTop: 0,
   }, 600, shiftLeft);

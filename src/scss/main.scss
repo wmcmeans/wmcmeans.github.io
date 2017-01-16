@@ -18,6 +18,13 @@
   src: url("../../dist/fonts/RHL-ital.otf")
 }
 
+$accent-color: #E53C1B;
+$total-canvas-width: 165%;
+$left-shift: -($total-canvas-width - 100%);
+$nav-width: 33%;
+$profile-width: -$left-shift;
+$profile-width-out-of-total-canvas: (($total-canvas-width - 100%) / $total-canvas-width) * 100%;
+
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -50,7 +57,12 @@ body {
 
 main {
   position: relative;
-  width: 165%;
+  width: $total-canvas-width;
+  transition: left 1000ms ease-in-out;
+  left: 0;
+  &.inactive {
+    left: $left-shift;
+  }
 }
 
 .left-nav-column {
@@ -58,7 +70,7 @@ main {
   box-sizing: border-box;
   float: left;
   background-color: #FFFFFF;
-  width: 33%;
+  width: $nav-width;
   height: 100vh;
   padding: 70px 110px;
   font-family: 'RHL', Garamond, 'Times New Roman', serif;
@@ -68,13 +80,13 @@ main {
   position: relative;
   float: left;
   background-color: #F2F3EF;
-  width: 67%;
+  width: 100% - $nav-width;
   min-height: 100vh;
 }
 
 .profile {
   background-color: #FFFFFF;
-  width: 39.3939394%;
+  width: $profile-width-out-of-total-canvas;
   height: 100%;
   position: relative;
   float: right;
@@ -93,8 +105,8 @@ main {
   height: 100%;
   &.inactive {
     position: fixed;
+    left: $left-shift;
     width: 100%;
-    left: -65%;
   }
 }
 
@@ -103,7 +115,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s;
@@ -154,7 +166,7 @@ main {
   top: 60px;
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
-  color: #E53C1B;
+  color: $accent-color;
   line-height: 23px;
   transition: all 0.1s;
 }
@@ -165,11 +177,11 @@ main {
 
 .button-link {
   padding: 7px 15px;
-  border: 1px solid #E53C1B;
+  border: 1px solid $accent-color;
   border-radius: 3px;
   &:hover {
     color: #FFFFFF;
-    background-color: #E53C1B;
+    background-color: $accent-color;
     transition: all 0.1s;
   }
 }
@@ -245,7 +257,7 @@ main {
   font-family: 'CT-bk', Helvetica, sans-serif;
   margin-top: 20px;
   font-size: 1.3em;
-  color: #E53C1B;
+  color: $accent-color;
   a {
     font-weight: bold;
     margin-right: 15px;
@@ -261,7 +273,7 @@ main {
   right: 0;
   top: 0;
   &.sticky {
-    width: 65%;
+    width: $profile-width;
     position: fixed;
   }
 }
@@ -269,7 +281,7 @@ main {
 .resume-link {
   font-family: 'CT-bk', Helvetica, sans-serif;
   font-size: 18px;
-  color: #E53C1B;
+  color: $accent-color;
   line-height: 23px;
   img {
     height: 0.75em;
@@ -400,59 +412,3 @@ main {
     color: #E83A03;
   }
 }
-
-// /* Rectangle 7: */
-// background: ;
-// /* Github: */
-// font-family: CircularStd-Book;
-// font-size: 14px;
-// color: #E53C1B;
-// line-height: 18px;
-// /* View Project: */
-// font-family: CircularStd-Book;
-// font-size: 14px;
-// color: #E53C1B;
-// line-height: 18px;
-// /* Lorem ipsum dolor si: */
-// font-family: RomainTextTrial;
-// font-size: 14px;
-// color: #000000;
-// line-height: 20px;
-// /* Mask: */
-// /* macboog-retina-big: */
-// /* Mask: */
-// /* Screen Shot 2016-02-08 at 11.51.47 PM: */
-// /* Mask: */
-// /* Screen Shot 2016-02-08 at 11.51.50 PM: */
-// /* Rectangle 8: */
-// background: #FFFFFF;
-// /* Will McMeans: */
-// font-family: RomainHeadlineTrial;
-// font-size: 18px;
-// color: #000000;
-// line-height: 28px;
-// /* default: */
-// background: #000000;
-// border: 1px solid #FFFFFF;
-// /* Cookbook: */
-// font-family: RomainHeadlineTrial;
-// font-size: 36px;
-// color: #000000;
-// line-height: 44px;
-// /* Spots: */
-// opacity: 0.3;
-// font-family: RomainHeadlineTrial;
-// font-size: 36px;
-// color: #000000;
-// line-height: 44px;
-// /* Rails Light: */
-// opacity: 0.3;
-// font-family: RomainHeadlineTrial;
-// font-size: 36px;
-// color: #000000;
-// line-height: 44px;
-// /* Profile: */
-// font-family: CircularStd-Book;
-// font-size: 18px;
-// color: #E53C1B;
-// line-height: 23px;
