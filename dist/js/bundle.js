@@ -54,11 +54,20 @@
 	var queryElAll = function queryElAll(selector) {
 	  return document.querySelectorAll(selector);
 	};
+	
 	var ACTIVE = 'active';
 	var INACTIVE = 'inactive';
 	var STICKY = 'sticky';
 	var VISIBLE = 'visible';
 	var ANIMATION_COMPLETE = 'animation-complete';
+	
+	var main = void 0;
+	var profileSection = void 0;
+	var profileInner = void 0;
+	var projectSection = void 0;
+	var overlay = void 0;
+	var projectLinks = void 0;
+	var resumeLinkContainer = void 0;
 	
 	var COOKBOOK = {
 	  img: 'cookbook-screenshot-resized.jpg',
@@ -112,7 +121,6 @@
 	  return html;
 	}
 	
-	// TODO: Remove jQuery
 	function animateScreenshot() {
 	  var screenshot = queryEl('.project-screenshot');
 	  screenshot.classList.remove(ANIMATION_COMPLETE);
@@ -135,32 +143,28 @@
 	function toggleProfileView(event) {
 	  event.preventDefault();
 	
-	  queryEl('.overlay').classList.remove(INACTIVE);
-	  queryEl('.profile').classList.remove(INACTIVE);
-	  queryEl('main').classList.add(INACTIVE);
+	  overlay.classList.remove(INACTIVE);
+	  profileSection.classList.remove(INACTIVE);
+	  main.classList.add(INACTIVE);
 	
 	  setTimeout(function () {
-	    queryEl('.projects').classList.add(INACTIVE);
-	    queryEl('.resume-link-container').classList.add(STICKY);
+	    projectSection.classList.add(INACTIVE);
+	    resumeLinkContainer.classList.add(STICKY);
 	  }, 1000);
 	}
 	
 	function toggleProjectView(event) {
 	  event.preventDefault();
 	
-	  queryEl('.resume-link-container').classList.remove(STICKY);
-	  queryEl('.projects').classList.remove(INACTIVE);
-	  queryEl('main').classList.remove(INACTIVE);
-	  queryEl('body').scrollTop = 0;
+	  resumeLinkContainer.classList.remove(STICKY);
+	  projectSection.classList.remove(INACTIVE);
+	  main.classList.remove(INACTIVE);
 	
 	  setTimeout(function () {
-	    queryEl('.overlay').classList.add(INACTIVE);
-	    queryEl('.profile').classList.add(INACTIVE);
+	    overlay.classList.add(INACTIVE);
+	    profileInner.scrollTop = 0;
+	    profileSection.classList.add(INACTIVE);
 	  }, 1000);
-	
-	  // $('html, body').animate({
-	  //   scrollTop: 0,
-	  // }, 600, shiftLeft);
 	}
 	
 	document.addEventListener('DOMContentLoaded', function () {
@@ -170,7 +174,6 @@
 	    var target = event.target || queryEl('.project-link.cookbook');
 	    window.clearTimeout(window.animateSS);
 	
-	    var projectLinks = queryElAll('.project-link');
 	    projectLinks.forEach(function (el) {
 	      return el.classList.remove(ACTIVE);
 	    });
@@ -188,11 +191,19 @@
 	    window.animateSS = window.setTimeout(animateScreenshot, 2600);
 	  }
 	
+	  main = queryEl('main');
+	  profileSection = queryEl('.profile');
+	  profileInner = queryEl('.profile-inner');
+	  projectSection = queryEl('.projects');
+	  overlay = queryEl('.overlay');
+	  projectLinks = queryElAll('.project-link');
+	  resumeLinkContainer = queryEl('.resume-link-container');
+	
 	  queryEl('.profile-link').addEventListener('click', toggleProfileView);
-	  queryEl('.overlay').addEventListener('click', toggleProjectView);
+	  overlay.addEventListener('click', toggleProjectView);
 	
 	  switchProjectView('');
-	  queryElAll('.project-link').forEach(function (el) {
+	  projectLinks.forEach(function (el) {
 	    return el.addEventListener('click', switchProjectView);
 	  });
 	});
