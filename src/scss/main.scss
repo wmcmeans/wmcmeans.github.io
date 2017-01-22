@@ -68,22 +68,53 @@ span, article, footer, time, small {
   list-style: none;
 }
 
-html {
-  font-size: 8px;
+html, body {
+  font-size: 11px;
+  overflow-x: hidden;
 }
+
+// Mobile overlay to switch to landscape view
+.mobile-portrait-overlay {
+  @include font-ct-bk;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #363636;
+  .overlay-text {
+    color: white;
+    font-size: 4rem;
+    box-sizing: border-box;
+    padding: 3rem;
+  }
+
+}
+@media screen and (max-aspect-ratio: 7/8) {
+  .mobile-portrait-overlay {
+    display: flex;
+  }
+}
+
 @media (min-width: 800px) {
   html {
-    font-size: 10px;
+    font-size: 13px;
   }
 }
 @media (min-width: 1025px) {
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 1281px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 @media (min-width: 1441px) {
@@ -101,10 +132,6 @@ html {
   content: "";
   display: block;
   clear: both;
-}
-
-body {
-  overflow-x: hidden;
 }
 
 main {
