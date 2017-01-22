@@ -69,9 +69,15 @@
 	var projectDescriptions = void 0;
 	var resumeLinkContainer = void 0;
 	
+	var screenshotAnimationTimer = void 0;
+	var animationCompletionTimer = void 0;
+	
 	function animateScreenshot() {
+	  if (animationCompletionTimer) {
+	    window.clearTimeout(animationCompletionTimer);
+	  }
+	
 	  var screenshot = queryEl('.project-screenshot.active');
-	  screenshot.classList.remove(ANIMATION_COMPLETE);
 	
 	  var containerHeight = queryEl('.screenshot-inner-container').offsetHeight;
 	
@@ -83,21 +89,23 @@
 	  var duration = 1500;
 	  screenshot.animate([{ top: 0, easing: 'ease-in' }, { top: top, easing: 'ease-out' }], duration);
 	
-	  setTimeout(function () {
+	  animationCompletionTimer = window.setTimeout(function () {
 	    return screenshot.classList.add(ANIMATION_COMPLETE);
 	  }, duration);
 	}
 	
 	function toggleProject(project) {
-	  // projectLink format is "{project}-link"
-	  window.clearTimeout(window.animateSS);
+	  if (screenshotAnimationTimer) {
+	    window.clearTimeout(screenshotAnimationTimer);
+	  }
 	
 	  var newActiveProjectScreenshot = queryEl('#' + project + '-screenshot');
 	  var newActiveProjectDescription = queryEl('#' + project + '-description');
 	
 	  projectScreenshots.forEach(function (el) {
 	    el.classList.remove(ACTIVE);
-	    el.style.top = '0';
+	    el.classList.remove(ANIMATION_COMPLETE);
+	    el.removeAttribute('style');
 	  });
 	  projectDescriptions.forEach(function (el) {
 	    return el.classList.remove(ACTIVE);
@@ -106,7 +114,7 @@
 	  newActiveProjectScreenshot.classList.add(ACTIVE);
 	  newActiveProjectDescription.classList.add(ACTIVE);
 	
-	  window.animateSS = window.setTimeout(animateScreenshot, 2600);
+	  screenshotAnimationTimer = window.setTimeout(animateScreenshot, 2600);
 	}
 	
 	function toggleOverlay() {
@@ -189,7 +197,7 @@
 	  projectLinks.forEach(function (el) {
 	    return el.addEventListener('click', switchProjectView);
 	  });
-	  window.animateSS = window.setTimeout(animateScreenshot, 2600);
+	  screenshotAnimationTimer = window.setTimeout(animateScreenshot, 2600);
 	});
 
 /***/ }
