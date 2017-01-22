@@ -13,68 +13,21 @@ let profileInner;
 let projectSection;
 let overlay;
 let projectLinks;
+let projectScreenshots;
+let projectDescriptions;
 let resumeLinkContainer;
 
-const COOKBOOK = {
-  img: 'cookbook-screenshot-resized.jpg',
-  description: 'Cookbook is an app for discovering, searching, and saving delicious recipes inspired by cooking.nytimes.com. It was built using Ruby on Rails and React/Flux.',
-  links: {
-    Live: 'http://www.thymes-cookbook.com',
-    GitHub: 'https://github.com/wmcmeans/cookbook',
-  },
-};
+function toggleProject(projectLink) {
+  // projectLink format is "{project}-link"
+  const project = projectLink.split('-')[0];
 
-const SPOTS = {
-  img: 'spots-screenshot.jpg',
-  description: 'Spots is a connect-the-dot browser game based on the popular mobile app. It uses jQuery listeners and CSS hoverstates to respond to user interaction and manipulate game state.',
-  links: {
-    Live: 'spots/game.html',
-    GitHub: 'https://github.com/wmcmeans/spots',
-  },
-};
+  const newActiveProjectScreenshot = queryEl(`#${project}-screenshot`);
+  const newActiveProjectDescription = queryEl(`#${project}-description`);
 
-const TRAILS = {
-  img: 'trails-screenshot.jpg',
-  description: 'Ruby on Trails is a MVC framework with a custom ORM system (Dynamic Archive) inspired by Ruby on Rails and Active Record. You\'re hiking Ruby on Trails!',
-  links: {
-    Live: 'http://www.ruby-on-trails.com/',
-    GitHub: 'https://github.com/wmcmeans/trails',
-    RubyGems: 'https://rubygems.org/gems/trails-mvc',
-  },
-};
-
-function createProjectHTML(projectName) {
-  let project;
-  switch (projectName) {
-    case 'spots-link':
-      project = SPOTS;
-      break;
-    case 'trails-link':
-      project = TRAILS;
-      break;
-    case 'cookbook-link':
-    default:
-      project = COOKBOOK;
-      break;
-  }
-  const html = `<div class="main-img-container">
-                  <!-- IMAGE PLACEHOLDER -->
-                  <img class="macbook" src="dist/images/macbook-retina.png" alt="" />
-                  <div class="screenshot-outer-container">
-                    <div class="screenshot-inner-container">
-                      <img class="project-screenshot" src="dist/images/${project.img}" />
-                    </div>
-                  </div>
-                </div>
-                <section class="project-description">
-                  <p>${project.description}</p>
-                  <div class="external-project-links">
-                  ${Object.entries(project.links).map(([name, link]) => (
-                      `<a target="_blank" href="${link}">${name}</a>`
-                    )).join('\n')}
-                  </div>
-                </section>`;
-  return html;
+  projectScreenshots.forEach(el => el.classList.remove(ACTIVE));
+  projectDescriptions.forEach(el => el.classList.remove(ACTIVE));
+  newActiveProjectScreenshot.classList.add(ACTIVE);
+  newActiveProjectDescription.classList.add(ACTIVE);
 }
 
 function animateScreenshot() {
@@ -143,12 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     projectLinks.forEach(el => el.classList.remove(ACTIVE));
     target.classList.add(ACTIVE);
 
-    const projectHtml = createProjectHTML(target.id);
+    toggleProject(target.id);
 
     const projectDetails = queryEl('.project-details');
     projectDetails.classList.remove(VISIBLE);
     window.setTimeout(() => {
-      projectDetails.innerHTML = projectHtml;
       projectDetails.classList.add(VISIBLE);
     }, 200);
 
@@ -161,11 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
   projectSection = queryEl('.projects');
   overlay = queryEl('.overlay');
   projectLinks = queryElAll('.project-link');
+  projectScreenshots = queryElAll('.project-screenshot');
+  projectDescriptions = queryElAll('.project-description');
   resumeLinkContainer = queryEl('.resume-link-container');
 
   queryEl('.profile-link').addEventListener('click', toggleProfileView);
   overlay.addEventListener('click', toggleProjectView);
 
-  switchProjectView({ preventDefault: () => (null) });
   projectLinks.forEach(el => el.addEventListener('click', switchProjectView));
 });

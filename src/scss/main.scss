@@ -309,17 +309,21 @@ main {
 
 .project-screenshot {
   position: absolute;
-  display: block;
+  display: none;
   max-width: 100%;
   min-height: 100%;
   transition: transform 1500ms ease-in-out;
   &.animation-complete {
     bottom: 0;
   }
+  &.active {
+    display: block;
+  }
 }
 
 .project-description {
   @include font-rt;
+  display: none;
   width: 95%;
   margin: auto;
   p {
@@ -327,6 +331,9 @@ main {
     margin: 0.5rem 0;
     font-size: 1.25rem;
     line-height: 2.5rem;
+  }
+  &.active {
+    display: block;
   }
 }
 

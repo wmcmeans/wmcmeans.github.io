@@ -34,8 +34,51 @@
           <a href="#" class="profile-link">
             Profile
           </a>
-          <article class="project-details">
-            <!-- FILLED IN WITH JAVASCRIPT -->
+          <article class="project-details visible">
+            <div class="main-img-container">
+              <img class="macbook" src="dist/images/macbook-retina.png" alt="" />
+              <div class="screenshot-outer-container">
+                <div class="screenshot-inner-container">
+                  <img
+                    id="cookbook-screenshot"
+                    class="project-screenshot active"
+                    src="dist/images/cookbook-screenshot-resized.jpg"
+                  />
+                  <img
+                    id="spots-screenshot"
+                    class="project-screenshot"
+                    src="dist/images/spots-screenshot.jpg"
+                  />
+                  <img
+                    id="trails-screenshot"
+                    class="project-screenshot"
+                    src="dist/images/trails-screenshot.jpg"
+                  />
+                </div>
+              </div>
+            </div>
+            <section id="cookbook-description" class="project-description active">
+              <p>Cookbook is an app for discovering, searching, and saving delicious recipes inspired by cooking.nytimes.com. It was built using Ruby on Rails and React/Flux.</p>
+              <div class="external-project-links">
+                <a target="_blank" href="http://www.thymes-cookbook.com">Live</a>
+                <a target="_blank" href="https://github.com/wmcmeans/cookbook">GitHub</a>
+              </div>
+            </section>
+            <section id="spots-description" class="project-description">
+              <p>Spots is a connect-the-dot browser game based on the popular mobile app. It uses jQuery listeners and CSS hoverstates to respond to user interaction and manipulate game state.</p>
+              <div class="external-project-links">
+                <a target="_blank" href="spots/game.html">Play</a>
+                <a target="_blank" href="https://github.com/wmcmeans/spots">GitHub</a>
+              </div>
+            </section>
+            <section id="trails-description" class="project-description">
+              <p>Ruby on Trails is a MVC framework with a custom ORM system (Dynamic Archive) inspired by Ruby on Rails and Active Record. You're hiking Ruby on Trails!</p>
+              <div class="external-project-links">
+                <a target="_blank" href="http://www.ruby-on-trails.com/">Live</a>
+                <a target="_blank" href="https://github.com/wmcmeans/trails">GitHub</a>
+                <a target="_blank" href="https://rubygems.org/gems/trails-mvc">RubyGems</a>
+              </div>
+            </section>
           </article>
         </section>
       </section>
