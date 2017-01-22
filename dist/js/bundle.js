@@ -69,25 +69,8 @@
 	var projectDescriptions = void 0;
 	var resumeLinkContainer = void 0;
 	
-	function toggleProject(projectLink) {
-	  // projectLink format is "{project}-link"
-	  var project = projectLink.split('-')[0];
-	
-	  var newActiveProjectScreenshot = queryEl('#' + project + '-screenshot');
-	  var newActiveProjectDescription = queryEl('#' + project + '-description');
-	
-	  projectScreenshots.forEach(function (el) {
-	    return el.classList.remove(ACTIVE);
-	  });
-	  projectDescriptions.forEach(function (el) {
-	    return el.classList.remove(ACTIVE);
-	  });
-	  newActiveProjectScreenshot.classList.add(ACTIVE);
-	  newActiveProjectDescription.classList.add(ACTIVE);
-	}
-	
 	function animateScreenshot() {
-	  var screenshot = queryEl('.project-screenshot');
+	  var screenshot = queryEl('.project-screenshot.active');
 	  screenshot.classList.remove(ANIMATION_COMPLETE);
 	
 	  var containerHeight = queryEl('.screenshot-inner-container').offsetHeight;
@@ -103,6 +86,27 @@
 	  setTimeout(function () {
 	    return screenshot.classList.add(ANIMATION_COMPLETE);
 	  }, duration);
+	}
+	
+	function toggleProject(project) {
+	  // projectLink format is "{project}-link"
+	  window.clearTimeout(window.animateSS);
+	
+	  var newActiveProjectScreenshot = queryEl('#' + project + '-screenshot');
+	  var newActiveProjectDescription = queryEl('#' + project + '-description');
+	
+	  projectScreenshots.forEach(function (el) {
+	    el.classList.remove(ACTIVE);
+	    el.style.top = '0';
+	  });
+	  projectDescriptions.forEach(function (el) {
+	    return el.classList.remove(ACTIVE);
+	  });
+	
+	  newActiveProjectScreenshot.classList.add(ACTIVE);
+	  newActiveProjectDescription.classList.add(ACTIVE);
+	
+	  window.animateSS = window.setTimeout(animateScreenshot, 2600);
 	}
 	
 	function toggleOverlay() {
@@ -151,25 +155,22 @@
 	document.addEventListener('DOMContentLoaded', function () {
 	  function switchProjectView(event) {
 	    event.preventDefault();
-	    if (event.target === queryEl('.project-link.active')) return;
+	    var target = event.target;
 	
-	    var target = event.target || queryEl('#cookbook-link');
-	    window.clearTimeout(window.animateSS);
+	    var projectDetails = queryEl('.project-details');
+	
+	    if (target === queryEl('.project-link.active')) return;
+	    projectDetails.classList.remove(VISIBLE);
 	
 	    projectLinks.forEach(function (el) {
 	      return el.classList.remove(ACTIVE);
 	    });
 	    target.classList.add(ACTIVE);
 	
-	    toggleProject(target.id);
-	
-	    var projectDetails = queryEl('.project-details');
-	    projectDetails.classList.remove(VISIBLE);
 	    window.setTimeout(function () {
+	      toggleProject(target.id.split('-')[0]);
 	      projectDetails.classList.add(VISIBLE);
 	    }, 200);
-	
-	    window.animateSS = window.setTimeout(animateScreenshot, 2600);
 	  }
 	
 	  main = queryEl('main');
@@ -188,6 +189,7 @@
 	  projectLinks.forEach(function (el) {
 	    return el.addEventListener('click', switchProjectView);
 	  });
+	  window.animateSS = window.setTimeout(animateScreenshot, 2600);
 	});
 
 /***/ }

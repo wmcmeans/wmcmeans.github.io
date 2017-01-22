@@ -17,21 +17,8 @@ let projectScreenshots;
 let projectDescriptions;
 let resumeLinkContainer;
 
-function toggleProject(projectLink) {
-  // projectLink format is "{project}-link"
-  const project = projectLink.split('-')[0];
-
-  const newActiveProjectScreenshot = queryEl(`#${project}-screenshot`);
-  const newActiveProjectDescription = queryEl(`#${project}-description`);
-
-  projectScreenshots.forEach(el => el.classList.remove(ACTIVE));
-  projectDescriptions.forEach(el => el.classList.remove(ACTIVE));
-  newActiveProjectScreenshot.classList.add(ACTIVE);
-  newActiveProjectDescription.classList.add(ACTIVE);
-}
-
 function animateScreenshot() {
-  const screenshot = queryEl('.project-screenshot');
+  const screenshot = queryEl('.project-screenshot.active');
   screenshot.classList.remove(ANIMATION_COMPLETE);
 
   const containerHeight = queryEl('.screenshot-inner-container').offsetHeight;
@@ -46,6 +33,25 @@ function animateScreenshot() {
   );
 
   setTimeout(() => screenshot.classList.add(ANIMATION_COMPLETE), duration);
+}
+
+function toggleProject(project) {
+  // projectLink format is "{project}-link"
+  window.clearTimeout(window.animateSS);
+
+  const newActiveProjectScreenshot = queryEl(`#${project}-screenshot`);
+  const newActiveProjectDescription = queryEl(`#${project}-description`);
+
+  projectScreenshots.forEach((el) => {
+    el.classList.remove(ACTIVE);
+    el.style.top = '0';
+  });
+  projectDescriptions.forEach(el => el.classList.remove(ACTIVE));
+
+  newActiveProjectScreenshot.classList.add(ACTIVE);
+  newActiveProjectDescription.classList.add(ACTIVE);
+
+  window.animateSS = window.setTimeout(animateScreenshot, 2600);
 }
 
 function toggleOverlay(fadeIn = true) {
@@ -88,23 +94,19 @@ function toggleProjectView(event) {
 document.addEventListener('DOMContentLoaded', () => {
   function switchProjectView(event) {
     event.preventDefault();
-    if (event.target === queryEl('.project-link.active')) return;
+    const { target } = event;
+    const projectDetails = queryEl('.project-details');
 
-    const target = event.target || queryEl('#cookbook-link');
-    window.clearTimeout(window.animateSS);
+    if (target === queryEl('.project-link.active')) return;
+    projectDetails.classList.remove(VISIBLE);
 
     projectLinks.forEach(el => el.classList.remove(ACTIVE));
     target.classList.add(ACTIVE);
 
-    toggleProject(target.id);
-
-    const projectDetails = queryEl('.project-details');
-    projectDetails.classList.remove(VISIBLE);
     window.setTimeout(() => {
+      toggleProject(target.id.split('-')[0]);
       projectDetails.classList.add(VISIBLE);
     }, 200);
-
-    window.animateSS = window.setTimeout(animateScreenshot, 2600);
   }
 
   main = queryEl('main');
@@ -121,4 +123,5 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.addEventListener('click', toggleProjectView);
 
   projectLinks.forEach(el => el.addEventListener('click', switchProjectView));
+  window.animateSS = window.setTimeout(animateScreenshot, 2600);
 });
