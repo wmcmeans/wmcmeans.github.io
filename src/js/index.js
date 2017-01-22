@@ -46,13 +46,13 @@ const TRAILS = {
 function createProjectHTML(projectName) {
   let project;
   switch (projectName) {
-    case 'Spots':
+    case 'spots-link':
       project = SPOTS;
       break;
-    case 'Trails':
+    case 'trails-link':
       project = TRAILS;
       break;
-    case 'Cookbook':
+    case 'cookbook-link':
     default:
       project = COOKBOOK;
       break;
@@ -134,15 +134,16 @@ function toggleProjectView(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
   function switchProjectView(event) {
+    event.preventDefault();
     if (event.target === queryEl('.project-link.active')) return;
 
-    const target = event.target || queryEl('.project-link.cookbook');
+    const target = event.target || queryEl('#cookbook-link');
     window.clearTimeout(window.animateSS);
 
     projectLinks.forEach(el => el.classList.remove(ACTIVE));
     target.classList.add(ACTIVE);
 
-    const projectHtml = createProjectHTML(target.innerHTML);
+    const projectHtml = createProjectHTML(target.id);
 
     const projectDetails = queryEl('.project-details');
     projectDetails.classList.remove(VISIBLE);
@@ -165,6 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
   queryEl('.profile-link').addEventListener('click', toggleProfileView);
   overlay.addEventListener('click', toggleProjectView);
 
-  switchProjectView('');
+  switchProjectView({ preventDefault: () => (null) });
   projectLinks.forEach(el => el.addEventListener('click', switchProjectView));
 });

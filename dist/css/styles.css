@@ -116,9 +116,11 @@ main {
     cursor: default;
     font-size: 1.5rem; }
 
+.nav-list li {
+  margin: 1.875rem 0; }
+
 .project-link {
   font-size: 3rem;
-  margin: 1.875rem 0;
   opacity: 0.3;
   cursor: pointer;
   transition: opacity 100ms; }

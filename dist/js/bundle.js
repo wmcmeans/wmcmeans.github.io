@@ -100,13 +100,13 @@
 	function createProjectHTML(projectName) {
 	  var project = void 0;
 	  switch (projectName) {
-	    case 'Spots':
+	    case 'spots-link':
 	      project = SPOTS;
 	      break;
-	    case 'Trails':
+	    case 'trails-link':
 	      project = TRAILS;
 	      break;
-	    case 'Cookbook':
+	    case 'cookbook-link':
 	    default:
 	      project = COOKBOOK;
 	      break;
@@ -185,9 +185,10 @@
 	
 	document.addEventListener('DOMContentLoaded', function () {
 	  function switchProjectView(event) {
+	    event.preventDefault();
 	    if (event.target === queryEl('.project-link.active')) return;
 	
-	    var target = event.target || queryEl('.project-link.cookbook');
+	    var target = event.target || queryEl('#cookbook-link');
 	    window.clearTimeout(window.animateSS);
 	
 	    projectLinks.forEach(function (el) {
@@ -195,7 +196,7 @@
 	    });
 	    target.classList.add(ACTIVE);
 	
-	    var projectHtml = createProjectHTML(target.innerHTML);
+	    var projectHtml = createProjectHTML(target.id);
 	
 	    var projectDetails = queryEl('.project-details');
 	    projectDetails.classList.remove(VISIBLE);
@@ -218,7 +219,9 @@
 	  queryEl('.profile-link').addEventListener('click', toggleProfileView);
 	  overlay.addEventListener('click', toggleProjectView);
 	
-	  switchProjectView('');
+	  switchProjectView({ preventDefault: function preventDefault() {
+	      return null;
+	    } });
 	  projectLinks.forEach(function (el) {
 	    return el.addEventListener('click', switchProjectView);
 	  });
