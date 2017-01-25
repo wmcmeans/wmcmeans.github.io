@@ -2,8 +2,7 @@
   "name": "wmcmeans-github",
   "private": true,
   "scripts": {
-    "install-modules": "yarn install || npm install",
-    "build": "npm run install-modules && npm run styleguide-build && grunt build-all-force && webpack --config webpack.dll.config.js && NODE_ENV=sandbox webpack && npm run watch",
+    "install-modules": "npm install",
     "watch": "parallelshell 'npm run watch-scss' 'npm run watch-webpack'",
     "watch-scss": "node-sass -w src/scss/main.scss dist/css/styles.css",
     "watch-webpack": "webpack --watch"
