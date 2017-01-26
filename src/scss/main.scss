@@ -430,6 +430,7 @@ main {
 .credits {
   margin-top: 1rem;
   @include font-rt;
+  font-size: 1rem;
   a {
     @extend .default-link;
   }
