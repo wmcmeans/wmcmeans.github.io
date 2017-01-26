@@ -2,8 +2,7 @@
   "name": "wmcmeans-github",
   "private": true,
   "scripts": {
-    "install-modules": "npm install",
-    "watch": "parallelshell 'npm run watch-scss' 'npm run watch-webpack'",
+    "install-modules": "yarn install || npm install",
     "watch-scss": "node-sass -w src/scss/main.scss dist/css/styles.css",
     "watch-webpack": "webpack --watch"
   },
