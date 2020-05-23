@@ -1,29 +1,32 @@
-@font-face {
-  font-family: "RT";
-  src: url("./lib/fonts/RT-reg.otf")
-}
-
-@font-face {
-  font-family: "RHL";
-  src: url("./lib/fonts/RHL-reg.otf")
-}
-
-@font-face {
-  font-family: "CT-bk";
-  src: url("./lib/fonts/CSTD-bk.otf")
-}
-
-@font-face {
-  font-family: "RHL-it";
-  src: url("./lib/fonts/RHL-ital.otf")
-}
-
 /* RESET */
-html, body, header, nav, h1, a,
-ul, li, strong, main, button, i,
-section, figure, img, div, h2, p, form,
-fieldset, label, input, textarea,
-span, article, footer, time, small {
+html,
+body,
+header,
+nav,
+h1,
+a,
+ul,
+li,
+strong,
+main,
+button,
+i,
+section,
+figure,
+img,
+div,
+h2,
+p,
+form,
+fieldset,
+label,
+input,
+textarea,
+span,
+article,
+footer,
+time,
+small {
   margin: 0;
   padding: 0;
   border: 0;
@@ -40,32 +43,22 @@ span, article, footer, time, small {
 
 body {
   margin-top: 100px;
-  font-family: 'RHL', Garamond, 'Times New Roman', serif;
+  font-family: Garamond, 'Times New Roman', serif;
   color: rgb(31, 28, 28);
   background-color: #F2F3EF;
 }
 
 h1 {
   font-size: 48px;
-  font-family: 'RT', Garamond, 'Times New Roman', serif;
+  font-family: Garamond, 'Times New Roman', serif;
   line-height: 1.6;
   text-align: center;
-}
-
-.placeholder-class {
-  font-family: 'CT-bk', Helvetica, sans-serif;
 }
 
 p {
   text-align: center;
   line-height: 1.5;
   font-size: 18px;
-}
-
-a {
-  font-family: 'CT-bk', Helvetica, sans-serif;
-  font-size: 15px;
-  color: #E83A03;
 }
 
 .group:after {
